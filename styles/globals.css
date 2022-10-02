@@ -7,8 +7,8 @@
     font-family: Poppins, system-ui, sans-serif;
   }
 
-  body {
+  /* body {
     @apply bg-background;
     @apply text-[color:white];
-  }
+  } */
 }
