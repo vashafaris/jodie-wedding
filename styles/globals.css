@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Doppelganger';
+  src: url('../public/fonts/Doppelganger_RUS.otf');
+}
+
 @layer base {
   html {
     font-family: Poppins, system-ui, sans-serif;
   }
 
-  /* body {
-    @apply bg-background;
-    @apply text-[color:white];
-  } */
+  h1 {
+    font-family: Doppelganger;
+  }
 }
