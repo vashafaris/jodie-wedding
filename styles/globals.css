@@ -14,5 +14,7 @@
 
   h1 {
     font-family: Doppelganger;
+    line-height: 79px;
+    font-size: 72px;
   }
 }

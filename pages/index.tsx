@@ -75,12 +75,13 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
   h2 {
     font-weight: 200;
-    font-size: 14px;
+    font-size: 28px;
     margin: 16px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 72px;
+    text-align: center;
   }
 `;
 
@@ -136,6 +137,15 @@ const StyledQuotes = styled.section`
     width: 20%;
     letter-spacing: 0.03em;
     line-height: 150%;
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    span {
+      font-size: 36px;
+      font-family: Doppelganger;
+    }
   }
 `;
 
@@ -349,8 +359,11 @@ const Home: NextPage = () => {
             >
               <img src="images/main-hero-avatar.png" alt="Putri and Jodie" />
               <h2>join us to celebrate</h2>
-              <h1>the wedding of</h1>
-              <h1>Putri & Jodie</h1>
+              <h1>
+                the wedding of
+                <br />
+                Putri & Jodie
+              </h1>
               <h2>18.12.22</h2>
             </StyledTitle>
 
@@ -428,7 +441,7 @@ const Home: NextPage = () => {
                 <br />
                 &
                 <br />
-                Iby Hefi Hifiasih Hasanah
+                Ibu Hefi Hifiasih Hasanah
               </span>
             </div>
           </div>
@@ -469,7 +482,7 @@ const Home: NextPage = () => {
       <StyledTimeAndPlace className="flex flex-col p-14">
         <div className="flex mb-14">
           <div className="flex flex-1 justify-center">
-            <h2 className="leading-10">Waktu</h2>
+            <h1 className="leading-10">Waktu</h1>
           </div>
 
           <div className="flex flex-col flex-1 mt-2">
@@ -483,7 +496,7 @@ const Home: NextPage = () => {
 
         <div className="flex">
           <div className="flex flex-1 justify-center">
-            <h2 className="leading-10">Tempat</h2>
+            <h1 className="leading-10">Tempat</h1>
           </div>
 
           <div className="flex flex-col flex-1 mt-2">
