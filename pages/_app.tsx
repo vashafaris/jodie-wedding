@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -6,7 +8,7 @@ import 'nprogress/nprogress.css';
 
 import '../styles/globals.css';
 
-const Nprogress = dynamic(
+const Nprogress: any = dynamic(
   () => {
     return import('~/components/nprogress');
   },
@@ -14,6 +16,8 @@ const Nprogress = dynamic(
 );
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const AnyComponent = Component as any;
+
   return (
     <>
       <Head>
@@ -23,7 +27,7 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nprogress />
-      <Component {...pageProps} />
+      <AnyComponent {...pageProps} />
     </>
   );
 }
