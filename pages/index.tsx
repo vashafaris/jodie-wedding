@@ -77,6 +77,8 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
     font-weight: 200;
     font-size: 28px;
     margin: 16px;
+    letter-spacing: 0.1em;
+    color: #5f5f5f;
   }
 
   h1 {
@@ -128,6 +130,7 @@ const StyledImg = styled.img`
 const StyledQuotes = styled.section`
   position: relative;
   height: 100vh;
+  max-height: 600px;
   background-image: url('images/bg-2.png');
 
   .quotes {
@@ -281,6 +284,7 @@ const StyledRsvp = styled.section`
 
     h1 {
       font-size: 72px;
+      color: white;
     }
   }
 
