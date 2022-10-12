@@ -13,7 +13,7 @@
       "~/types/*": ["types/*"]
     },
     "moduleResolution": "node",
-    "strict": true,
+    "strict": false,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
