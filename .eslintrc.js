@@ -14,6 +14,7 @@ module.exports = {
     'jsx-a11y/accessible-emoji': 'off',
     'new-cap': 'off',
     'react/react-in-jsx-scope': 'off',
+    'no-unnecessary-condition': 'off',
   },
   settings: {
     'import/resolver': {
