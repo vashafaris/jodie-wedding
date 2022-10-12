@@ -52,7 +52,7 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
     height: props.height,
     width: props.width,
   },
-}))`
+}))<StyledImgWrapperProps>`
   z-index: 10;
   position: absolute;
   display: flex;
@@ -94,7 +94,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
     height: props.height,
     width: props.width,
   },
-}))`
+}))<StyledImgWrapperProps>`
   position: absolute;
   display: flex;
   align-items: center;
@@ -116,7 +116,7 @@ const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({
     height: props.height,
     width: props.width,
   },
-}))`
+}))<StyledImgWrapperProps>`
   transition: ease-in-out opacity 1s;
   position: relative;
 `;
@@ -378,7 +378,12 @@ const Home: NextPage = () => {
               translateX={mousePosition.x}
               translateY={mousePosition.y}
             >
-              <StyledImgWrapper translateX={-230} translateY={-275}>
+              <StyledImgWrapper
+                height={screenSize?.y * 1.4}
+                width={screenSize?.x * 1.4}
+                translateX={-230}
+                translateY={-275}
+              >
                 <StyledImg src="images/hero-1.png" />
               </StyledImgWrapper>
 
@@ -401,7 +406,12 @@ const Home: NextPage = () => {
                 <StyledImg src="images/hero-4.png" />
               </StyledImgWrapper> */}
 
-              <StyledImgWrapper translateX={180} translateY={270}>
+              <StyledImgWrapper
+                height={screenSize?.y * 1.4}
+                width={screenSize?.x * 1.4}
+                translateX={180}
+                translateY={270}
+              >
                 <StyledImg src="images/hero-5.png" />
               </StyledImgWrapper>
 
