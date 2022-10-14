@@ -96,6 +96,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
 
   will-change: transform;
+  display: none;
 `;
 
 const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({

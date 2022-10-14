@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -38,6 +39,12 @@ const StyledRsvp = styled.section`
 `;
 
 const Rsvp = () => {
+  const router = useRouter();
+
+  if (router.query.type !== 'rsvp') {
+    return null;
+  }
+
   return (
     <StyledRsvp>
       <div className="title-container">

@@ -38,6 +38,7 @@ const StyledComments = styled.section`
   .input-comment-container {
     display: flex;
     flex: 1;
+    gap: 24px;
 
     .title-container {
       display: flex;
@@ -59,6 +60,11 @@ const StyledComments = styled.section`
   .list-comment-container {
     display: flex;
     flex-direction: column;
+
+    .load-more-container {
+      margin-top: 24px;
+      align-self: center;
+    }
 
     button {
       color: #091f40;
@@ -100,7 +106,7 @@ const Comments = () => {
       <div className="list-comment-container">
         <Comment />
         <Comment />
-        <div>
+        <div className="load-more-container">
           <button>MORE LOVELY MESSAGES</button>
         </div>
       </div>
