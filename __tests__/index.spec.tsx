@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
-import Home from '~/pages/index';
+import Hero from '~/modules/landing-page/components/Hero';
 
-describe('Home', () => {
+describe('Hero', () => {
   it('renders main text', () => {
-    render(<Home />);
+    render(<Hero />);
 
-    const mainText = screen.getByText('Next.js Starter Template!');
+    const mainText = screen.getByText(/Putri & Jodie/);
 
     expect(mainText).toBeInTheDocument();
   });
