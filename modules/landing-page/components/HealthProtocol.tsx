@@ -10,6 +10,7 @@ const StyledHealthProtocol = styled.section`
   @media (max-width: ${DEVICE_SIZE.tablet}) {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   .title-container {
@@ -34,7 +35,6 @@ const StyledHealthProtocol = styled.section`
 
       @media (max-width: ${DEVICE_SIZE.tablet}) {
         grid-template-columns: auto;
-        text-align: center;
       }
 
       span {
