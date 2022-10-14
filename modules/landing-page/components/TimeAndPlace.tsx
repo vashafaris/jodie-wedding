@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,16 +15,25 @@ const StyledTimeAndPlace = styled.section`
     font-size: 72px;
   }
 
-  .styled-container {
+  .info-container {
     display: flex;
     flex: 1;
     justify-content: center;
     gap: 15%;
 
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      flex-direction: column;
+    }
+
     .title {
       display: flex;
       flex: 1;
       justify-content: flex-end;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        margin-bottom: 20px;
+        justify-content: center;
+      }
     }
 
     .information {
@@ -32,8 +42,22 @@ const StyledTimeAndPlace = styled.section`
       flex-direction: column;
       font-size: 28px;
 
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        align-items: center;
+      }
+
       .address {
         font-size: 18px;
+
+        @media (max-width: ${DEVICE_SIZE.tablet}) {
+          text-align: center;
+        }
+      }
+
+      .time {
+        @media (max-width: ${DEVICE_SIZE.tablet}) {
+          font-size: 18px;
+        }
       }
     }
   }
@@ -42,7 +66,7 @@ const StyledTimeAndPlace = styled.section`
 const TimeAndPlace = () => {
   return (
     <StyledTimeAndPlace>
-      <div className="styled-container">
+      <div className="info-container">
         <div className="title">
           <h1>Waktu</h1>
         </div>
@@ -51,14 +75,14 @@ const TimeAndPlace = () => {
           <span>Minggu,</span>
           <span>18 Desember 2022</span>
           <br />
-          <span>19.00 - 21.00 WIB</span>
+          <span className="time">19.00 - 21.00 WIB</span>
           <br />
 
           <Button>Lihat Livestreaming</Button>
         </div>
       </div>
 
-      <div className="styled-container">
+      <div className="info-container">
         <div className="title">
           <h1>Tempat</h1>
         </div>

@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -34,6 +35,10 @@ const StyledComments = styled.section`
   flex: 1;
   padding: 100px 128px;
   gap: 100px;
+
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    display: none;
+  }
 
   .input-comment-container {
     display: flex;

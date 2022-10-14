@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,6 +9,11 @@ const StyledOutfitTheme = styled.section`
   align-items: center;
   gap: 15%;
 
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    padding: 60px 0;
+    flex-direction: column;
+  }
+
   .image-container {
     display: flex;
     justify-content: flex-end;
@@ -15,6 +21,11 @@ const StyledOutfitTheme = styled.section`
 
     img {
       max-width: 80%;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        max-width: 100%;
+        object-fit: contain;
+      }
     }
   }
 
@@ -23,12 +34,20 @@ const StyledOutfitTheme = styled.section`
     flex-direction: column;
     flex: 1;
 
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      text-align: center;
+    }
+
     h1 {
       margin-bottom: 20px;
     }
 
     span {
       font-size: 28px;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        font-size: 18px;
+      }
     }
   }
 `;

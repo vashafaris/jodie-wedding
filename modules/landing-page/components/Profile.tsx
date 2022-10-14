@@ -11,12 +11,25 @@ const StyledProfile = styled.section`
   justify-content: center;
   padding: 94px 0;
 
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    gap: 0px;
+    padding: 0;
+    padding-top: 12px;
+    padding-bottom: 94px;
+  }
+
   .profile {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     gap: 15%;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      flex-direction: column;
+      gap: 12px;
+      padding: 48px;
+    }
 
     .left-section {
       display: flex;
@@ -32,13 +45,22 @@ const StyledProfile = styled.section`
       justify-content: flex-start;
     }
 
+    .mobile-section {
+      align-self: flex-start;
+
+      @media (min-width: ${DEVICE_SIZE.tablet}) {
+        display: none;
+      }
+    }
+
     .red-flower {
       position: absolute;
       top: -100px;
       left: -80px;
 
       @media (max-width: ${DEVICE_SIZE.tablet}) {
-        display: none;
+        left: -40px;
+        width: 171px;
       }
     }
 
@@ -48,7 +70,8 @@ const StyledProfile = styled.section`
       right: -80px;
 
       @media (max-width: ${DEVICE_SIZE.tablet}) {
-        display: none;
+        right: -40px;
+        width: 171px;
       }
     }
 
@@ -67,12 +90,20 @@ const StyledProfile = styled.section`
 
     h1 {
       margin-bottom: 40px;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        margin-bottom: 24px;
+      }
     }
 
     .information {
       width: fit-content;
       transform: translateX(50%);
       font-size: 18px;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        transform: translateX(20%);
+      }
 
       .title {
         display: inline-flex;
@@ -122,6 +153,23 @@ const Profile = () => {
           <img src="images/red-flower.png" alt="Red Flower" className="red-flower" />
           <img src="images/putri-profile-raw.png" alt="Profile Putri" className="profile-img" />
         </div>
+
+        <div className="mobile-section">
+          <h1>Putri Nadhira</h1>
+
+          <div className="information">
+            <span className="title">Putri pertama dari</span>
+            <br />
+
+            <span className="subtitle">
+              Bapak Jusuf Sanggarabudi
+              <br />
+              &
+              <br />
+              Ibu Hefi Hifiasih Hasanah
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="profile">
@@ -136,6 +184,23 @@ const Profile = () => {
             <br />
             Rizky
           </h1>
+
+          <div className="information">
+            <span className="title">Putra pertama dari</span>
+            <br />
+
+            <span className="subtitle">
+              Bapak Jimmy D. Hidayat
+              <br />
+              &
+              <br />
+              Ibu Dian Indrijani
+            </span>
+          </div>
+        </div>
+
+        <div className="mobile-section">
+          <h1>Jodie Rizky</h1>
 
           <div className="information">
             <span className="title">Putra pertama dari</span>

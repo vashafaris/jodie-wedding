@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import LoadingScreen from '~/components/loading-screen';
 
 import Comments from '~/modules/landing-page/components/Comments';
 import Farewell from '~/modules/landing-page/components/Farewell';
@@ -29,7 +30,7 @@ const LandingPage = () => {
   }, []);
 
   if (isLoading) {
-    return <StyledMain>Loading...</StyledMain>;
+    return <LoadingScreen />;
   }
 
   return (

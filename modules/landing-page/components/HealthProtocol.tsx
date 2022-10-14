@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,10 +7,19 @@ const StyledHealthProtocol = styled.section`
   display: flex;
   align-items: start;
 
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .title-container {
     display: flex;
     flex: 1;
     justify-content: center;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      margin-bottom: 24px;
+    }
   }
 
   .information-container {
@@ -18,8 +28,14 @@ const StyledHealthProtocol = styled.section`
     flex-direction column;
 
     .protocol-row-container {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto auto;
       gap: 24px;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        grid-template-columns: auto;
+        text-align: center;
+      }
 
       span {
         font-size: 18px;
@@ -53,9 +69,7 @@ const HealthProtocol = () => {
               alt="Dont forget to social distancing"
             />
           </div>
-        </div>
 
-        <div className="protocol-row-container">
           <div>
             <span>
               3. Hindari berjabat tangan

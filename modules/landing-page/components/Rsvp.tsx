@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
@@ -12,10 +13,21 @@ const StyledRsvp = styled.section`
   display: flex;
   align-items: center;
 
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .title-container {
     display: flex;
     flex: 1;
     justify-content: center;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
 
     h1 {
       color: white;
@@ -26,10 +38,16 @@ const StyledRsvp = styled.section`
     display: flex;
     flex: 1;
     flex-direction: column;
+    font-size: 28px;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      align-items: center;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+    }
 
     span {
-      font-size: 28px;
-
       &:last-of-type {
         margin-bottom: 44px;
       }

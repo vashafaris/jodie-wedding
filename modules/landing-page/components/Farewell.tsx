@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -13,8 +14,16 @@ const StyledFarewell = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 80px;
+
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    background-image: url('images/mobile/farewell.png');
+    background-position: center bottom;
+
+    h1 {
+      font-size: 72px;
+    }
+  }
 
   span {
     font-size: 18px;

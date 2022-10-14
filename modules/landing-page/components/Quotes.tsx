@@ -13,7 +13,7 @@ const StyledQuotes = styled.section`
     background-image: url('images/mobile/bg-2.png');
     background-size: cover;
     background-position: center bottom;
-    padding: 80px 24px;
+    padding: 80px 44px;
   }
 
   .quotes {
@@ -27,11 +27,20 @@ const StyledQuotes = styled.section`
     p {
       font-size: 18px;
       margin-bottom: 12px;
+      font-weight: 450;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        letter-spacing: 0.03em;
+      }
     }
 
     span {
       font-size: 36px;
       font-family: Doppelganger;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        font-size: 48px;
+      }
     }
 
     @media (max-width: ${DEVICE_SIZE.tablet}) {

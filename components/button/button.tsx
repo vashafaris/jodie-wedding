@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,6 +8,10 @@ const StyledButton = styled.button`
   border: 2px solid #193053;
   width: fit-content;
   font-size: 18px;
+
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    font-size: 14px;
+  }
 `;
 
 interface ButtonProps {
