@@ -6,6 +6,7 @@ const StyledFarewell = styled.section`
 
   background-image: url('images/farewell.png');
   background-position: center bottom;
+  background-size: cover;
 
   display: flex;
   flex: 1;

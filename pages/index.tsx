@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import styled from 'styled-components';
 
 import Farewell from '~/modules/landing-page/components/Farewell';
+import HealthProtocol from '~/modules/landing-page/components/HealthProtocol';
 import Hero from '~/modules/landing-page/components/Hero';
 import OutfitTheme from '~/modules/landing-page/components/OutfitTheme';
 import Profile from '~/modules/landing-page/components/Profile';
@@ -25,6 +26,8 @@ const Home: NextPage = () => {
       <TimeAndPlace />
 
       <OutfitTheme />
+
+      <HealthProtocol />
 
       <Rsvp />
 

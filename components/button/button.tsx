@@ -6,6 +6,7 @@ const StyledButton = styled.button`
   border-radius: 100px;
   border: 2px solid #193053;
   width: fit-content;
+  font-size: 18px;
 `;
 
 interface ButtonProps {

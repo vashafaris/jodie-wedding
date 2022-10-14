@@ -8,12 +8,48 @@ const StyledProfile = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 94px 0;
 
   .profile {
-    width: 80%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    width: 100%;
+    gap: 15%;
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: flex-end;
+    }
+
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: flex-start;
+    }
+
+    .red-flower {
+      position: absolute;
+      top: -100px;
+      left: -80px;
+    }
+
+    .blue-flower {
+      position: absolute;
+      top: -100px;
+      right: -80px;
+    }
+
+    .profile-img {
+      max-width: 306px;
+    }
+
+    .img-container {
+      position: relative;
+    }
 
     h1 {
       font-size: 72px;
@@ -22,6 +58,7 @@ const StyledProfile = styled.section`
     }
 
     .information {
+      width: fit-content;
       transform: translateX(50%);
       font-size: 18px;
 
@@ -42,7 +79,7 @@ const Profile = () => {
   return (
     <StyledProfile>
       <div className="profile">
-        <div>
+        <div className="left-section">
           <h1>
             Putri
             <br />
@@ -63,17 +100,19 @@ const Profile = () => {
           </div>
         </div>
 
-        <div>
-          <img src="images/putri-profile.png" alt="Profile Putri" />
+        <div className="right-section img-container">
+          <img src="images/red-flower.png" alt="Red Flower" className="red-flower" />
+          <img src="images/putri-profile-raw.png" alt="Profile Putri" className="profile-img" />
         </div>
       </div>
 
       <div className="profile">
-        <div>
-          <img src="images/jodie-profile.png" alt="Profile Jodie" />
+        <div className="left-section img-container">
+          <img src="images/blue-flower.png" alt="Blue Flower" className="blue-flower" />
+          <img src="images/jodie-profile-raw.png" alt="Profile Jodie" className="profile-img" />
         </div>
 
-        <div>
+        <div className="right-section">
           <h1>
             Jodie
             <br />

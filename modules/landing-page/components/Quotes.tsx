@@ -6,6 +6,7 @@ const StyledQuotes = styled.section`
   height: 100vh;
   max-height: 600px;
   background-image: url('images/bg-2.png');
+  background-size: cover;
 
   .quotes {
     position: absolute;

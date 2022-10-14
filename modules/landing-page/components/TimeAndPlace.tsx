@@ -8,40 +8,75 @@ const StyledTimeAndPlace = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 94px;
 
   h2 {
     font-size: 72px;
+  }
+
+  .styled-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 15%;
+
+    .title {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .information {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      font-size: 28px;
+
+      .address {
+        font-size: 18px;
+      }
+    }
   }
 `;
 
 const TimeAndPlace = () => {
   return (
-    <StyledTimeAndPlace className="flex flex-col p-14">
-      <div className="flex mb-14">
-        <div className="flex flex-1 justify-center">
-          <h1 className="leading-10">Waktu</h1>
+    <StyledTimeAndPlace>
+      <div className="styled-container">
+        <div className="title">
+          <h1>Waktu</h1>
         </div>
 
-        <div className="flex flex-col flex-1 mt-2">
-          <span className="text-2xl">Minggu,</span>
-          <span className="text-2xl mb-14">18 Desember 2022</span>
-          <span className="text-2xl mb-8">19.00 - 21.00 WIB</span>
+        <div className="information">
+          <span>Minggu,</span>
+          <span>18 Desember 2022</span>
+          <br />
+          <span>19.00 - 21.00 WIB</span>
+          <br />
 
           <Button>Lihat Livestreaming</Button>
         </div>
       </div>
 
-      <div className="flex">
-        <div className="flex flex-1 justify-center">
-          <h1 className="leading-10">Tempat</h1>
+      <div className="styled-container">
+        <div className="title">
+          <h1>Tempat</h1>
         </div>
 
-        <div className="flex flex-col flex-1 mt-2">
-          <span className="text-2xl mb-5">Kembali Ke Rumah Sarwono</span>
+        <div className="information">
+          <span>Kembali Ke Rumah Sarwono</span>
 
-          <span className="text-lg">Jl. Raya Pasar Minggu KM 18.2</span>
-          <span className="text-lg">RT. 12 / RW.1 - Ragunan</span>
-          <span className="text-lg mb-5">Kec. Pasar Minggu - Jakarta Selatan</span>
+          <br />
+
+          <span className="address">
+            Jl. Raya Pasar Minggu KM 18.2
+            <br />
+            RT. 12 / RW.1 - Ragunan
+            <br />
+            Kec. Pasar Minggu - Jakarta Selatan
+          </span>
+
+          <br />
 
           <Button>Lihat Lokasi di Google Maps</Button>
         </div>

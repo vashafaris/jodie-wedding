@@ -6,10 +6,11 @@ const StyledOutfitTheme = styled.section`
 
   display: flex;
   align-items: center;
+  gap: 15%;
 
   .image-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     flex: 1;
 
     img {
