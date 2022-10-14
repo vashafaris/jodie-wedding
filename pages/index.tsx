@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import styled from 'styled-components';
 
+import Comments from '~/modules/landing-page/components/Comments';
 import Farewell from '~/modules/landing-page/components/Farewell';
 import HealthProtocol from '~/modules/landing-page/components/HealthProtocol';
 import Hero from '~/modules/landing-page/components/Hero';
@@ -18,19 +19,13 @@ const Home: NextPage = () => {
   return (
     <StyledMain>
       <Hero />
-
       <Quotes />
-
       <Profile />
-
       <TimeAndPlace />
-
       <OutfitTheme />
-
       <HealthProtocol />
-
       <Rsvp />
-
+      <Comments />
       <Farewell />
     </StyledMain>
   );

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledProfile = styled.section`
   min-height: 100vh;
   display: flex;
-  gap: 40px;
+  gap: 120px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
