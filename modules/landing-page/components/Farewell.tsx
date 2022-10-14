@@ -16,10 +16,6 @@ const StyledFarewell = styled.section`
 
   gap: 80px;
 
-  h1 {
-    font-size: 72px;
-  }
-
   span {
     font-size: 18px;
   }

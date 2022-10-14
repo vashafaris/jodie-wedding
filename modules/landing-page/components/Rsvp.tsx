@@ -18,7 +18,6 @@ const StyledRsvp = styled.section`
     justify-content: center;
 
     h1 {
-      font-size: 72px;
       color: white;
     }
   }

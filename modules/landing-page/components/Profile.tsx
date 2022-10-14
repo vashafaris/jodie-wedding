@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -35,12 +36,20 @@ const StyledProfile = styled.section`
       position: absolute;
       top: -100px;
       left: -80px;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        display: none;
+      }
     }
 
     .blue-flower {
       position: absolute;
       top: -100px;
       right: -80px;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        display: none;
+      }
     }
 
     .profile-img {
@@ -49,11 +58,14 @@ const StyledProfile = styled.section`
 
     .img-container {
       position: relative;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        justify-content: center;
+        align-items: center;
+      }
     }
 
     h1 {
-      font-size: 72px;
-      line-height: 80px;
       margin-bottom: 40px;
     }
 
@@ -72,6 +84,12 @@ const StyledProfile = styled.section`
         color: #193053;
       }
     }
+
+    .info-container {
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -79,7 +97,7 @@ const Profile = () => {
   return (
     <StyledProfile>
       <div className="profile">
-        <div className="left-section">
+        <div className="left-section info-container">
           <h1>
             Putri
             <br />
@@ -112,7 +130,7 @@ const Profile = () => {
           <img src="images/jodie-profile-raw.png" alt="Profile Jodie" className="profile-img" />
         </div>
 
-        <div className="right-section">
+        <div className="right-section info-container">
           <h1>
             Jodie
             <br />

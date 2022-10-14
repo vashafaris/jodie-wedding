@@ -10,10 +10,6 @@ const StyledHealthProtocol = styled.section`
     display: flex;
     flex: 1;
     justify-content: center;
-
-    h1 {
-      font-size: 72px;
-    }
   }
 
   .information-container {

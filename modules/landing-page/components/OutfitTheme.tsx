@@ -24,7 +24,6 @@ const StyledOutfitTheme = styled.section`
     flex: 1;
 
     h1 {
-      font-size: 72px;
       margin-bottom: 20px;
     }
 

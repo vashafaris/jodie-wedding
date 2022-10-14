@@ -1,3 +1,4 @@
+import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,6 +9,13 @@ const StyledQuotes = styled.section`
   background-image: url('images/bg-2.png');
   background-size: cover;
 
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    background-image: url('images/mobile/bg-2.png');
+    background-size: cover;
+    background-position: center bottom;
+    padding: 80px 24px;
+  }
+
   .quotes {
     position: absolute;
     top: 20%;
@@ -17,12 +25,22 @@ const StyledQuotes = styled.section`
     line-height: 150%;
 
     p {
+      font-size: 18px;
       margin-bottom: 12px;
     }
 
     span {
       font-size: 36px;
       font-family: Doppelganger;
+    }
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      top: unset;
+      width: unset;
+      left: unset;
     }
   }
 `;

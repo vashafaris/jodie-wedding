@@ -1,4 +1,5 @@
 /* eslint-disable no-negated-condition */
+import { DEVICE_SIZE } from 'constants/device-size';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -13,6 +14,10 @@ const StyledHero = styled.section`
   position: relative;
   width: 100%;
   height: 100vh;
+
+  @media ${DEVICE_SIZE.mobileL} {
+    max-width: 800px;
+  }
 `;
 
 const StyledWrapper = styled.div`
@@ -60,6 +65,10 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   img {
     width: 50%;
     max-width: 600px;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      width: 60%;
+    }
   }
 
   h2 {
@@ -68,10 +77,13 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
     margin: 16px;
     letter-spacing: 0.1em;
     color: #5f5f5f;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      font-size: 18px;
+    }
   }
 
   h1 {
-    font-size: 72px;
     text-align: center;
   }
 `;

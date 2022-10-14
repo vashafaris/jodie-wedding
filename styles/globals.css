@@ -19,4 +19,11 @@
     font-size: 72px;
     color: #193053;
   }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 48px;
+      line-height: 53px;
+    }
+  }
 }
