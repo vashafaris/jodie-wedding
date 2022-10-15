@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @next/next/no-img-element */
 import { DEVICE_SIZE } from 'constants/device-size';
-import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const StyledHealthProtocol = styled.section`
@@ -45,43 +49,139 @@ const StyledHealthProtocol = styled.section`
 `;
 
 const HealthProtocol = () => {
+  const titleAnimation = useAnimation();
+  const descriptionAnimation = useAnimation();
+  const imgAnimation = useAnimation();
+
+  const [ref, isInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      titleAnimation.start({
+        opacity: 1,
+        translateY: '0px',
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+
+      descriptionAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+
+      imgAnimation.start({
+        opacity: 1,
+        scale: 1,
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+    }
+  }, [isInView]);
+
   return (
-    <StyledHealthProtocol>
-      <div className="title-container">
+    <StyledHealthProtocol ref={ref}>
+      <motion.div
+        animate={titleAnimation}
+        initial={{
+          opacity: 0,
+          translateY: '40px',
+        }}
+        className="title-container"
+      >
         <h1>
           Protokol
           <br />
           Kesehatan
         </h1>
-      </div>
+      </motion.div>
 
       <div className="information-container">
         <div className="protocol-row-container">
           <div>
-            <span>1. Gunakan masker</span>
-            <img src="images/protocol-masker.png" alt="Please wear masker" />
+            <motion.span
+              animate={descriptionAnimation}
+              initial={{
+                opacity: 0,
+              }}
+            >
+              1. Gunakan masker
+            </motion.span>
+            <motion.img
+              animate={imgAnimation}
+              initial={{
+                opacity: 0,
+                scale: 1.4,
+              }}
+              src="images/protocol-masker.png"
+              alt="Please wear masker"
+            />
           </div>
 
           <div>
-            <span>2. Jaga jarak</span>
-            <img
+            <motion.span
+              animate={descriptionAnimation}
+              initial={{
+                opacity: 0,
+              }}
+            >
+              2. Jaga jarak
+            </motion.span>
+            <motion.img
+              animate={imgAnimation}
+              initial={{
+                opacity: 0,
+                scale: 1.4,
+              }}
               src="images/protocol-social-distancing.png"
               alt="Dont forget to social distancing"
             />
           </div>
 
           <div>
-            <span>
+            <motion.span
+              animate={descriptionAnimation}
+              initial={{
+                opacity: 0,
+              }}
+            >
               3. Hindari berjabat tangan
               <br />
               dan gunakan salam isyarat
-            </span>
-            <img src="images/protocol-namaste.png" alt="Namaste" />
+            </motion.span>
+            <motion.img
+              animate={imgAnimation}
+              initial={{
+                opacity: 0,
+                scale: 1.4,
+              }}
+              src="images/protocol-namaste.png"
+              alt="Namaste"
+            />
           </div>
 
           <div>
-            <span>4. Cuci tangan secara berkala</span>
-            <img src="images/protocol-hand-wash.png" alt="Wash your hand" />
+            <motion.span animate={descriptionAnimation} initial={{ opacity: 0 }}>
+              4. Cuci tangan secara berkala
+            </motion.span>
+            <motion.img
+              animate={imgAnimation}
+              initial={{
+                opacity: 0,
+                scale: 1.4,
+              }}
+              src="images/protocol-hand-wash.png"
+              alt="Wash your hand"
+            />
           </div>
         </div>
       </div>
