@@ -37,7 +37,8 @@ const StyledComments = styled.section`
   gap: 100px;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
-    display: none;
+    padding: 100px 24px;
+    gap: 24px;
   }
 
   .input-comment-container {
@@ -45,9 +46,18 @@ const StyledComments = styled.section`
     flex: 1;
     gap: 24px;
 
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      flex-direction: column;
+      text-align: center;
+    }
+
     .title-container {
       display: flex;
       flex: 1;
+
+      @media (max-width: ${DEVICE_SIZE.tablet}) {
+        align-self: center;
+      }
     }
 
     .comment-section {
