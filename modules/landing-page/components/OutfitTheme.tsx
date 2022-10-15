@@ -86,7 +86,7 @@ const OutfitTheme = () => {
         },
       });
     }
-  }, [informationAnimation, isInView]);
+  }, [imgAnimation, informationAnimation, isInView]);
 
   return (
     <StyledOutfitTheme ref={ref}>

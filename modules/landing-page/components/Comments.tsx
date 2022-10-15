@@ -6,6 +6,8 @@ import Button from '~/components/button/button';
 import TextArea from '~/components/input/text-area';
 import TextInput from '~/components/input/text-input';
 
+import { useGetComments } from '../hooks/get-comments';
+
 const StyledComment = styled.section`
   padding: 24px 0;
   border-bottom: 1px solid black;
@@ -88,17 +90,24 @@ const StyledComments = styled.section`
   }
 `;
 
-const Comment = () => {
+interface CommentProps {
+  name: string;
+  comment: string;
+}
+
+const Comment = ({ name, comment }: CommentProps) => {
   return (
     <StyledComment>
-      <span>Jodie Rizky</span>
+      <span>{name}</span>
 
-      <p>Confokingratiz, mate. Semoga daft punk kembali tur. COPIUM</p>
+      <p>{comment}</p>
     </StyledComment>
   );
 };
 
 const Comments = () => {
+  const { comments } = useGetComments();
+
   return (
     <StyledComments>
       <div className="input-comment-container">
@@ -119,8 +128,9 @@ const Comments = () => {
       </div>
 
       <div className="list-comment-container">
-        <Comment />
-        <Comment />
+        {comments?.map(comment => (
+          <Comment key={comment._id} name={comment.name} comment={comment.comment} />
+        ))}
         <div className="load-more-container">
           <button>MORE LOVELY MESSAGES</button>
         </div>
