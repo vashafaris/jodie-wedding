@@ -136,12 +136,12 @@ const Profile = () => {
 
   const [putriRef, isPutriInView] = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.4,
   });
 
   const [jodieRef, isJodieInView] = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.4,
   });
 
   useEffect(() => {

@@ -59,7 +59,7 @@ const HealthProtocol = () => {
 
   const [ref, isInView] = useInView({
     triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.4,
   });
 
   useEffect(() => {

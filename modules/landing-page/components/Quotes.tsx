@@ -62,7 +62,7 @@ const Quotes = () => {
 
   const [ref, isInView] = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.4,
   });
 
   useEffect(() => {
