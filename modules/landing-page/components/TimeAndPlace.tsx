@@ -72,7 +72,7 @@ const TimeAndPlace = () => {
 
   const [ref, isInView] = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.3,
   });
 
   useEffect(() => {

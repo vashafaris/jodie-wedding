@@ -228,7 +228,13 @@ const Profile = () => {
           <img src="images/putri-profile-raw.png" alt="Profile Putri" className="profile-img" />
         </motion.div>
 
-        <div className="mobile-section">
+        <motion.div
+          animate={putriInformationAnimation}
+          initial={{
+            opacity: 0,
+          }}
+          className="mobile-section"
+        >
           <h1>Putri Nadhira</h1>
 
           <div className="information">
@@ -243,7 +249,7 @@ const Profile = () => {
               Ibu Hefi Hifiasih Hasanah
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="profile" ref={jodieRef}>
@@ -286,7 +292,13 @@ const Profile = () => {
           </div>
         </motion.div>
 
-        <div className="mobile-section">
+        <motion.div
+          animate={jodieInformationAnimation}
+          initial={{
+            opacity: 0,
+          }}
+          className="mobile-section"
+        >
           <h1>Jodie Rizky</h1>
 
           <div className="information">
@@ -301,7 +313,7 @@ const Profile = () => {
               Ibu Dian Indrijani
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </StyledProfile>
   );
