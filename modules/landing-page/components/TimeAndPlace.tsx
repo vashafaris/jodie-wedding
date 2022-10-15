@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { DEVICE_SIZE } from 'constants/device-size';
-import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 import Button from '~/components/button/button';
@@ -64,14 +67,56 @@ const StyledTimeAndPlace = styled.section`
 `;
 
 const TimeAndPlace = () => {
-  return (
-    <StyledTimeAndPlace>
-      <div className="info-container">
-        <div className="title">
-          <h1>Waktu</h1>
-        </div>
+  const titleAnimation = useAnimation();
+  const informationAnimation = useAnimation();
 
-        <div className="information">
+  const [ref, isInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      titleAnimation.start({
+        opacity: 1,
+        translateY: '0px',
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+
+      informationAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+    }
+  }, [informationAnimation, isInView, titleAnimation]);
+
+  return (
+    <StyledTimeAndPlace ref={ref}>
+      <div className="info-container">
+        <motion.div
+          animate={titleAnimation}
+          initial={{
+            opacity: 0,
+            translateY: '40px',
+          }}
+          className="title"
+        >
+          <h1>Waktu</h1>
+        </motion.div>
+
+        <motion.div
+          animate={informationAnimation}
+          initial={{
+            opacity: 0,
+          }}
+          className="information"
+        >
           <span>Minggu,</span>
           <span>18 Desember 2022</span>
           <br />
@@ -79,15 +124,28 @@ const TimeAndPlace = () => {
           <br />
 
           <Button>Lihat Livestreaming</Button>
-        </div>
+        </motion.div>
       </div>
 
       <div className="info-container">
-        <div className="title">
+        <motion.div
+          animate={titleAnimation}
+          initial={{
+            opacity: 0,
+            translateY: '40px',
+          }}
+          className="title"
+        >
           <h1>Tempat</h1>
-        </div>
+        </motion.div>
 
-        <div className="information">
+        <motion.div
+          animate={informationAnimation}
+          initial={{
+            opacity: 0,
+          }}
+          className="information"
+        >
           <span>Kembali Ke Rumah Sarwono</span>
 
           <br />
@@ -103,7 +161,7 @@ const TimeAndPlace = () => {
           <br />
 
           <Button>Lihat Lokasi di Google Maps</Button>
-        </div>
+        </motion.div>
       </div>
     </StyledTimeAndPlace>
   );

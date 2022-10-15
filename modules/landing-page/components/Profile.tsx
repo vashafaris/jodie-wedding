@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { DEVICE_SIZE } from 'constants/device-size';
-import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const StyledProfile = styled.section`
@@ -125,10 +128,75 @@ const StyledProfile = styled.section`
 `;
 
 const Profile = () => {
+  const putriImgAnimation = useAnimation();
+  const putriInformationAnimation = useAnimation();
+
+  const jodieImgAnimation = useAnimation();
+  const jodieInformationAnimation = useAnimation();
+
+  const [putriRef, isPutriInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.9,
+  });
+
+  const [jodieRef, isJodieInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (isPutriInView) {
+      putriImgAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+
+      putriInformationAnimation.start({
+        opacity: 1,
+        translateY: '0px',
+        transition: {
+          ease: 'easeOut',
+          duration: 1,
+        },
+      });
+    }
+  }, [isPutriInView, putriImgAnimation, putriInformationAnimation]);
+
+  useEffect(() => {
+    if (isJodieInView) {
+      jodieImgAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+
+      jodieInformationAnimation.start({
+        opacity: 1,
+        translateY: '0px',
+        transition: {
+          ease: 'easeOut',
+          duration: 1,
+        },
+      });
+    }
+  }, [isJodieInView, jodieImgAnimation, jodieInformationAnimation]);
+
   return (
     <StyledProfile>
-      <div className="profile">
-        <div className="left-section info-container">
+      <div className="profile" ref={putriRef}>
+        <motion.div
+          animate={putriInformationAnimation}
+          initial={{
+            opacity: 0,
+            translateY: '40px',
+          }}
+          className="left-section info-container"
+        >
           <h1>
             Putri
             <br />
@@ -147,12 +215,18 @@ const Profile = () => {
               Ibu Hefi Hifiasih Hasanah
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="right-section img-container">
+        <motion.div
+          animate={putriImgAnimation}
+          initial={{
+            opacity: 0,
+          }}
+          className="right-section img-container"
+        >
           <img src="images/red-flower.png" alt="Red Flower" className="red-flower" />
           <img src="images/putri-profile-raw.png" alt="Profile Putri" className="profile-img" />
-        </div>
+        </motion.div>
 
         <div className="mobile-section">
           <h1>Putri Nadhira</h1>
@@ -172,13 +246,26 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="profile">
-        <div className="left-section img-container">
+      <div className="profile" ref={jodieRef}>
+        <motion.div
+          animate={jodieImgAnimation}
+          initial={{
+            opacity: 0,
+          }}
+          className="left-section img-container"
+        >
           <img src="images/blue-flower.png" alt="Blue Flower" className="blue-flower" />
           <img src="images/jodie-profile-raw.png" alt="Profile Jodie" className="profile-img" />
-        </div>
+        </motion.div>
 
-        <div className="right-section info-container">
+        <motion.div
+          animate={jodieInformationAnimation}
+          initial={{
+            opacity: 0,
+            translateY: '40px',
+          }}
+          className="right-section info-container"
+        >
           <h1>
             Jodie
             <br />
@@ -197,7 +284,7 @@ const Profile = () => {
               Ibu Dian Indrijani
             </span>
           </div>
-        </div>
+        </motion.div>
 
         <div className="mobile-section">
           <h1>Jodie Rizky</h1>

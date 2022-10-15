@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { DEVICE_SIZE } from 'constants/device-size';
-import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const StyledQuotes = styled.section`
@@ -55,9 +58,36 @@ const StyledQuotes = styled.section`
 `;
 
 const Quotes = () => {
+  const quotesAnimation = useAnimation();
+
+  const [ref, isInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      quotesAnimation.start({
+        opacity: 1,
+        translateY: '0px',
+        transition: {
+          ease: 'easeOut',
+          duration: 1,
+        },
+      });
+    }
+  }, [isInView, quotesAnimation]);
+
   return (
-    <StyledQuotes>
-      <div className="quotes">
+    <StyledQuotes ref={ref}>
+      <motion.div
+        animate={quotesAnimation}
+        initial={{
+          opacity: 0,
+          translateY: '40px',
+        }}
+        className="quotes"
+      >
         <p>
           And one of His signs is that He created for you spouses from among yourselves so that you
           may find comfort in them. And He has placed between you compassion and mercy. Surely in
@@ -67,7 +97,7 @@ const Quotes = () => {
         <br />
 
         <span>QS Ar-Rum 21</span>
-      </div>
+      </motion.div>
     </StyledQuotes>
   );
 };

@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { DEVICE_SIZE } from 'constants/device-size';
-import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const StyledOutfitTheme = styled.section`
@@ -30,6 +33,9 @@ const StyledOutfitTheme = styled.section`
   }
 
   .information-container {
+    // opacity: 0;
+    // transform: translateY(40px);
+
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -53,17 +59,55 @@ const StyledOutfitTheme = styled.section`
 `;
 
 const OutfitTheme = () => {
+  const imgAnimation = useAnimation();
+  const informationAnimation = useAnimation();
+
+  const [ref, isInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      imgAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+
+      informationAnimation.start({
+        opacity: 1,
+        translateY: '0px',
+        transition: {
+          duration: 1,
+          ease: 'easeOut',
+        },
+      });
+    }
+  }, [informationAnimation, isInView]);
+
   return (
-    <StyledOutfitTheme>
+    <StyledOutfitTheme ref={ref}>
       <div className="image-container">
-        <img src="images/berkain.png" alt="Berkain" />
+        <motion.img
+          animate={imgAnimation}
+          initial={{ opacity: 0 }}
+          src="images/berkain.png"
+          alt="Berkain"
+        />
       </div>
 
-      <div className="information-container">
+      <motion.div
+        initial={{ opacity: 0, translateY: '40px' }}
+        animate={informationAnimation}
+        className="information-container"
+      >
         <h1>Tema Busana</h1>
         <span>Mari kenakan kain batik</span>
         <span>atau tenun kesayanganmu!</span>
-      </div>
+      </motion.div>
     </StyledOutfitTheme>
   );
 };
