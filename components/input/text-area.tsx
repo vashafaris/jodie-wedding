@@ -4,6 +4,8 @@ import styled from 'styled-components';
 interface TextAreaProps {
   placeholder: string;
   rows: number;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  value: string;
 }
 
 const StyledTextArea = styled.textarea`
@@ -12,8 +14,16 @@ const StyledTextArea = styled.textarea`
   color: black;
 `;
 
-const TextArea = ({ placeholder, rows }: TextAreaProps) => {
-  return <StyledTextArea placeholder={placeholder} rows={rows} />;
+const TextArea = ({ placeholder, rows, onChange, value, ...rest }: TextAreaProps) => {
+  return (
+    <StyledTextArea
+      placeholder={placeholder}
+      rows={rows}
+      onChange={onChange}
+      value={value}
+      {...rest}
+    />
+  );
 };
 
 export default TextArea;

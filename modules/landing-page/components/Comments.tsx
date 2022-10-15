@@ -1,10 +1,11 @@
 import { DEVICE_SIZE } from 'constants/device-size';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '~/components/button/button';
 import TextArea from '~/components/input/text-area';
 import TextInput from '~/components/input/text-input';
+import fetch from '~/lib/fetch';
 
 import { useGetComments } from '../hooks/get-comments';
 
@@ -106,7 +107,25 @@ const Comment = ({ name, comment }: CommentProps) => {
 };
 
 const Comments = () => {
-  const { comments } = useGetComments();
+  const { comments, refetch } = useGetComments();
+
+  const [name, setName] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+
+  const handlePostComment = async () => {
+    await fetch('api/post-comment', {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        comment: message,
+      }),
+    });
+
+    setName('');
+    setMessage('');
+
+    await refetch();
+  };
 
   return (
     <StyledComments>
@@ -120,10 +139,19 @@ const Comments = () => {
         </div>
 
         <div className="comment-section">
-          <TextInput placeholder="Nama..." />
-          <TextArea placeholder="Pesan..." rows={4} />
+          <TextInput
+            placeholder="Nama..."
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+            value={name}
+          />
+          <TextArea
+            placeholder="Pesan..."
+            rows={4}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+            value={message}
+          />
 
-          <Button>Kirim</Button>
+          <Button onClick={handlePostComment}>Kirim</Button>
         </div>
       </div>
 

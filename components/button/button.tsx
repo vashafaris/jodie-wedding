@@ -16,8 +16,13 @@ const StyledButton = styled.button`
 
 interface ButtonProps {
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
-const Button = ({ children }: ButtonProps) => <StyledButton>{children}</StyledButton>;
+const Button = ({ children, onClick, ...rest }: ButtonProps) => (
+  <StyledButton onClick={onClick} {...rest}>
+    {children}
+  </StyledButton>
+);
 
 export default Button;

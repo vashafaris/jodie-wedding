@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 interface TextInputProps {
   placeholder: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
 const StyledTextInput = styled.input`
@@ -11,8 +13,8 @@ const StyledTextInput = styled.input`
   color: black;
 `;
 
-const TextInput = ({ placeholder }: TextInputProps) => {
-  return <StyledTextInput placeholder={placeholder} />;
+const TextInput = ({ placeholder, onChange, value, ...rest }: TextInputProps) => {
+  return <StyledTextInput placeholder={placeholder} onChange={onChange} value={value} {...rest} />;
 };
 
 export default TextInput;
