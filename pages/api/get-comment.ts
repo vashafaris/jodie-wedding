@@ -10,7 +10,7 @@ import { connectToDatabase } from '~/lib/mongodb';
 const handler: NextApiHandler = async (_: NextApiRequest, res: NextApiResponse) => {
   const db = await connectToDatabase();
 
-  const comments = await db.collection('comments').find({}).sort({ _id: -1 }).toArray();
+  const comments = await db.collection('comments').find({}).sort({ _id: -1 }).limit(3).toArray();
 
   res
     .status(200)

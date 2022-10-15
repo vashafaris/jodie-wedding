@@ -112,11 +112,19 @@ const Comments = () => {
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>('');
 
+  const [isSubmitLoading, setIsSubmitLoading] = useState<boolean>(false);
+
   const handlePostComment = async () => {
+    if (!message) {
+      return;
+    }
+
+    setIsSubmitLoading(true);
+
     await fetch('api/post-comment', {
       method: 'POST',
       body: JSON.stringify({
-        name,
+        name: name ? name : 'Anonymous',
         comment: message,
       }),
     });
@@ -125,6 +133,7 @@ const Comments = () => {
     setMessage('');
 
     await refetch();
+    setIsSubmitLoading(false);
   };
 
   return (
@@ -151,7 +160,9 @@ const Comments = () => {
             value={message}
           />
 
-          <Button onClick={handlePostComment}>Kirim</Button>
+          <Button isLoading={isSubmitLoading} onClick={handlePostComment}>
+            Kirim
+          </Button>
         </div>
       </div>
 
