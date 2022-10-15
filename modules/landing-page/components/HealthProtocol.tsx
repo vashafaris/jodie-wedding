@@ -44,6 +44,10 @@ const StyledHealthProtocol = styled.section`
       span {
         font-size: 18px;
       }
+
+      img {
+        max-width: 80vw;
+      }
     }
   }
 `;
@@ -55,7 +59,7 @@ const HealthProtocol = () => {
 
   const [ref, isInView] = useInView({
     triggerOnce: true,
-    threshold: 0.9,
+    threshold: 0.3,
   });
 
   useEffect(() => {
@@ -79,14 +83,14 @@ const HealthProtocol = () => {
 
       imgAnimation.start({
         opacity: 1,
-        scale: 1,
+        scale: 0.8,
         transition: {
           duration: 1,
           ease: 'easeOut',
         },
       });
     }
-  }, [isInView]);
+  }, [descriptionAnimation, imgAnimation, isInView, titleAnimation]);
 
   return (
     <StyledHealthProtocol ref={ref}>
@@ -120,7 +124,7 @@ const HealthProtocol = () => {
               animate={imgAnimation}
               initial={{
                 opacity: 0,
-                scale: 1.4,
+                scale: 1,
               }}
               src="images/protocol-masker.png"
               alt="Please wear masker"
@@ -140,7 +144,7 @@ const HealthProtocol = () => {
               animate={imgAnimation}
               initial={{
                 opacity: 0,
-                scale: 1.4,
+                scale: 1,
               }}
               src="images/protocol-social-distancing.png"
               alt="Dont forget to social distancing"
@@ -162,7 +166,7 @@ const HealthProtocol = () => {
               animate={imgAnimation}
               initial={{
                 opacity: 0,
-                scale: 1.4,
+                scale: 1,
               }}
               src="images/protocol-namaste.png"
               alt="Namaste"
@@ -177,7 +181,7 @@ const HealthProtocol = () => {
               animate={imgAnimation}
               initial={{
                 opacity: 0,
-                scale: 1.4,
+                scale: 1,
               }}
               src="images/protocol-hand-wash.png"
               alt="Wash your hand"
