@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Button from '~/components/button/button';
 import TextArea from '~/components/input/text-area';
 import TextInput from '~/components/input/text-input';
+import LoadingSpinner from '~/components/loading-spinner';
 import fetch from '~/lib/fetch';
 
 import { useGetComments } from '../hooks/get-comments';
@@ -79,6 +80,12 @@ const StyledComments = styled.section`
     display: flex;
     flex-direction: column;
 
+    .comment-loading-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .load-more-container {
       margin-top: 24px;
       align-self: center;
@@ -107,7 +114,9 @@ const Comment = ({ name, comment }: CommentProps) => {
 };
 
 const Comments = () => {
-  const { comments, refetch } = useGetComments();
+  const { comments, refetch, fetchMore, isLoading } = useGetComments();
+
+  console.log(isLoading);
 
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -167,12 +176,26 @@ const Comments = () => {
       </div>
 
       <div className="list-comment-container">
-        {comments?.map(comment => (
-          <Comment key={comment._id} name={comment.name} comment={comment.comment} />
-        ))}
-        <div className="load-more-container">
-          <button>MORE LOVELY MESSAGES</button>
-        </div>
+        {isLoading ? (
+          <div className="comment-loading-container">
+            <LoadingSpinner />
+          </div>
+        ) : (
+          <>
+            {comments?.map(comment => (
+              <Comment key={comment._id} name={comment.name} comment={comment.comment} />
+            ))}
+            <div className="load-more-container">
+              <button
+                onClick={async () => {
+                  await fetchMore();
+                }}
+              >
+                MORE LOVELY MESSAGES
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </StyledComments>
   );
