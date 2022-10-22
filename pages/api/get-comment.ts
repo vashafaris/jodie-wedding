@@ -17,7 +17,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     .limit(Number(req.query.limit) || 5)
     .toArray();
 
-  const count = await db.collection('comments').count();
+  const count = await db.collection('comments').countDocuments();
 
   res.status(200).json({
     status: 'Success',
