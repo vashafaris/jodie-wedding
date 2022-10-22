@@ -48,8 +48,6 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
 
     const val = (height || 0) - mouseY * 4;
 
-    console.log(val);
-
     if (val > 830) {
       return 830;
     }
