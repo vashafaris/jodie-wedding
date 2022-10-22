@@ -1,5 +1,6 @@
 /* eslint-disable no-negated-condition */
 import { DEVICE_SIZE } from 'constants/device-size';
+import useCursorTracker from 'hooks/useCursorTracker';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -25,12 +26,12 @@ const StyledGradient = styled.div`
   bottom: 0;
   z-index: 999;
 
-  height: 100px;
+  height: 50px;
   width: 100%;
   background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), white);
 `;
 
-const StyledWrapper = styled.div`
+const StyledContainer = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
@@ -113,12 +114,11 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   transform-origin: center;
   pointer-events: none;
   transform-style: preserve-3d;
-  /* width: 3820px;
-  height: 3350px; */
+  width: 3820px;
+  height: 3350px;
   transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
 
   will-change: transform;
-  display: none;
 `;
 
 const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({
@@ -130,11 +130,19 @@ const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({
   },
 }))<StyledImgWrapperProps>`
   transition: ease-in-out opacity 1s;
-  position: relative;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const StyledImg = styled.img`
-  max-width: 215px;
+interface StyledImgProps {
+  maxWidth: number;
+}
+
+const StyledImg = styled.img<StyledImgProps>`
+  position: absolute;
+  max-width: ${props => props.maxWidth}px;
 `;
 
 const Hero = () => {
@@ -144,15 +152,15 @@ const Hero = () => {
     y: 0,
   });
 
-  const mousePosition = {
-    x: 0,
-    y: 0,
-  };
+  // const mousePosition = {
+  //   x: 0,
+  //   y: 0,
+  // };
 
-  // const mousePosition = useCursorTracker({
-  //   includeTouch: false,
-  //   containerRef,
-  // });
+  const mousePosition = useCursorTracker({
+    includeTouch: false,
+    containerRef,
+  });
 
   useEffect(() => {
     setScreenSize({
@@ -163,13 +171,13 @@ const Hero = () => {
 
   return (
     <StyledHero>
-      <StyledWrapper>
+      <StyledContainer>
         <StyledCanvas>
           <StyledTitle
             height={screenSize.y * 1.4}
             width={screenSize.x * 1.4}
-            translateX={mousePosition.x}
-            translateY={mousePosition.y}
+            translateX={mousePosition.x * 0.98}
+            translateY={mousePosition.y * 0.98}
           >
             <img src="images/main-hero-avatar.png" alt="Putri and Jodie" />
             <h2>join us to celebrate</h2>
@@ -185,52 +193,135 @@ const Hero = () => {
             ref={containerRef}
             height={screenSize.y * 1.4}
             width={screenSize.x * 1.4}
-            translateX={mousePosition.x}
-            translateY={mousePosition.y}
+            translateX={mousePosition.x * 0.9}
+            translateY={mousePosition.y * 0.9}
           >
             <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
-              translateX={-230}
-              translateY={-275}
+              translateX={-200}
+              translateY={-380}
             >
-              <StyledImg src="images/hero-1.png" />
+              <StyledImg src="images/hero/colored-1.png" maxWidth={256} />
             </StyledImgWrapper>
 
-            {/* <StyledImgWrapper translateX={-31} translateY={125}>
-                <StyledImg src="images/hero-2.png" />
-              </StyledImgWrapper> */}
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={0}
+              translateY={-780}
+            >
+              <StyledImg src="images/hero/colored-2.png" maxWidth={310} />
+            </StyledImgWrapper>
 
-            {/* <StyledImgWrapper translateX={-111} translateY={225}>
-                <StyledImg src="images/hero-3.png" />
-              </StyledImgWrapper> */}
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-900}
+              translateY={100}
+            >
+              <StyledImg src="images/hero/colored-3.png" maxWidth={333} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={450}
+              translateY={100}
+            >
+              <StyledImg src="images/hero/colored-4.png" maxWidth={333} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={850}
+              translateY={200}
+            >
+              <StyledImg src="images/hero/colored-5.png" maxWidth={333} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={0}
+              translateY={800}
+            >
+              <StyledImg src="images/hero/colored-6.png" maxWidth={346} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={400}
+              translateY={650}
+            >
+              <StyledImg src="images/hero/colored-7.png" maxWidth={333} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={800}
+              translateY={750}
+            >
+              <StyledImg src="images/hero/colored-8.png" maxWidth={333} />
+            </StyledImgWrapper>
           </StyledImgCanvas>
 
           <StyledImgCanvas
             height={screenSize.y * 1.4}
             width={screenSize.x * 1.4}
-            translateX={mousePosition.x}
-            translateY={mousePosition.y}
+            translateX={mousePosition.x * 0.93}
+            translateY={mousePosition.y * 0.93}
           >
-            {/* <StyledImgWrapper translateX={-331} translateY={195}>
-                <StyledImg src="images/hero-4.png" />
-              </StyledImgWrapper> */}
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-800}
+              translateY={-500}
+            >
+              <StyledImg src="images/hero/bw-1.png" maxWidth={291} />
+            </StyledImgWrapper>
 
             <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
-              translateX={180}
-              translateY={270}
+              translateX={600}
+              translateY={-500}
             >
-              <StyledImg src="images/hero-5.png" />
+              <StyledImg src="images/hero/bw-2.png" maxWidth={365} />
             </StyledImgWrapper>
 
-            {/* <StyledImgWrapper translateX={-231} translateY={40}>
-                <StyledImg src="images/hero-6.png" />
-              </StyledImgWrapper> */}
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={1050}
+              translateY={-400}
+            >
+              <StyledImg src="images/hero/bw-3.png" maxWidth={365} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-450}
+              translateY={300}
+            >
+              <StyledImg src="images/hero/bw-4.png" maxWidth={448} />
+            </StyledImgWrapper>
+
+            <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-700}
+              translateY={720}
+            >
+              <StyledImg src="images/hero/bw-5.png" maxWidth={365} />
+            </StyledImgWrapper>
           </StyledImgCanvas>
         </StyledCanvas>
-      </StyledWrapper>
+      </StyledContainer>
 
       <StyledGradient />
     </StyledHero>

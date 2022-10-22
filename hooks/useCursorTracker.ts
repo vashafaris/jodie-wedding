@@ -23,8 +23,8 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
   const ticker = useCallback(() => {
     if (!!containerRef.current.offsetWidth)
       setTransformPosition({
-        x: ((containerRef.current.offsetWidth / 4 || 0) - mousePosition.current.x) * 3 * 0.3,
-        y: ((containerRef.current.offsetHeight / 8 || 0) - mousePosition.current.y) * 3 * 0.3,
+        x: ((containerRef.current.offsetWidth / 4 || 0) - mousePosition.current.x) * 3,
+        y: ((containerRef.current.offsetHeight / 8 || 0) - mousePosition.current.y) * 3,
       });
   }, [containerRef]);
 
