@@ -48,9 +48,11 @@ export function useGetComments() {
 
   return {
     comments: data?.results,
+    count: data?.count ?? 0,
     info: data?.info,
     isLoading: (!data && !error) || isLoading,
     isError: error,
+    limit,
     refetch,
     fetchMore,
   } as const;

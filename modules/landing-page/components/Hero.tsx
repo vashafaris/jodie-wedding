@@ -20,6 +20,16 @@ const StyledHero = styled.section`
   }
 `;
 
+const StyledGradient = styled.div`
+  position: absolute;
+  bottom: 0;
+  z-index: 999;
+
+  height: 100px;
+  width: 100%;
+  background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), white);
+`;
+
 const StyledWrapper = styled.div`
   position: relative;
   overflow: hidden;
@@ -221,6 +231,8 @@ const Hero = () => {
           </StyledImgCanvas>
         </StyledCanvas>
       </StyledWrapper>
+
+      <StyledGradient />
     </StyledHero>
   );
 };

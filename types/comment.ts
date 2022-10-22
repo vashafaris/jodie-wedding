@@ -5,6 +5,7 @@ export interface CommentObject {
 }
 
 export interface CommentResponse {
+  count: number;
   results: CommentObject[];
   info: {
     seed: string;

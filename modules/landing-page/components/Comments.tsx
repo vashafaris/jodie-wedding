@@ -114,9 +114,7 @@ const Comment = ({ name, comment }: CommentProps) => {
 };
 
 const Comments = () => {
-  const { comments, refetch, fetchMore, isLoading } = useGetComments();
-
-  console.log(isLoading);
+  const { comments, count, isLoading, limit, fetchMore, refetch } = useGetComments();
 
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -185,15 +183,17 @@ const Comments = () => {
             {comments?.map(comment => (
               <Comment key={comment._id} name={comment.name} comment={comment.comment} />
             ))}
-            <div className="load-more-container">
-              <button
-                onClick={async () => {
-                  await fetchMore();
-                }}
-              >
-                MORE LOVELY MESSAGES
-              </button>
-            </div>
+            {limit < count ? (
+              <div className="load-more-container">
+                <button
+                  onClick={async () => {
+                    await fetchMore();
+                  }}
+                >
+                  MORE LOVELY MESSAGES
+                </button>
+              </div>
+            ) : null}
           </>
         )}
       </div>

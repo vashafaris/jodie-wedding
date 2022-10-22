@@ -17,9 +17,14 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     .limit(Number(req.query.limit) || 5)
     .toArray();
 
-  res
-    .status(200)
-    .json({ status: 'Success', message: 'Comments Successfully Fetched', results: comments || [] });
+  const count = await db.collection('comments').count();
+
+  res.status(200).json({
+    status: 'Success',
+    message: 'Comments Successfully Fetched',
+    results: comments || [],
+    count: count || 0,
+  });
 };
 
 export default handler;
