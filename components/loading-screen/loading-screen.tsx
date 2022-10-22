@@ -19,7 +19,7 @@ const StyledLoadingScreen = styled.main`
 const LoadingScreen = () => {
   return (
     <StyledLoadingScreen>
-      <h2>18.12.22</h2>
+      <h1>Putri & Jodie</h1>
     </StyledLoadingScreen>
   );
 };

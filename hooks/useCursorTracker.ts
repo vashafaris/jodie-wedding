@@ -20,28 +20,14 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
     y: containerRef?.current?.offsetHeight / 2,
   });
 
-  // const calculateX = x => {
-  //   if (x > 700) {
-  //     return 800;
-  //   }
-
-  //   if (x < 240) {
-  //     return 240;
-  //   }
-
-  //   return x;
-  // };
-
-  // const calculateY = y => {
-  //   if (y > 300) {
-  //     return 300;
-  //   }
-
-  //   return y;
-  // };
-
   const calculateX = (containerX, mouseX) => {
-    const val = (containerX / 2 || 0) - mouseX * 2;
+    let width = containerX;
+
+    if (width < 1920) {
+      width = 1920;
+    }
+
+    const val = (width || 0) - mouseX * 4;
 
     if (val > 890) {
       return 890;
@@ -55,7 +41,18 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
   };
 
   const calculateY = (containerY, mouseY) => {
-    const val = (containerY / 2 || 0) - mouseY * 2;
+    let height = containerY;
+    if (height < 1080) {
+      height = 1080;
+    }
+
+    const val = (height || 0) - mouseY * 4;
+
+    console.log(val);
+
+    if (val > 830) {
+      return 830;
+    }
 
     if (val < -670) {
       return -670;

@@ -221,14 +221,14 @@ const Hero = () => {
               <StyledImg src="images/hero/colored-2.png" maxWidth={310} />
             </StyledImgWrapper> */}
 
-            <StyledImgWrapper
+            {/* <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
               translateX={-1100}
               translateY={70}
             >
               <StyledImg src="images/hero/colored-3.png" maxWidth={333} />
-            </StyledImgWrapper>
+            </StyledImgWrapper> */}
 
             {/* <StyledImgWrapper
               height={screenSize.y * 1.4}
@@ -289,11 +289,20 @@ const Hero = () => {
             <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
+              translateX={-550}
+              translateY={270}
+            >
+              <StyledImg src="images/hero/bw-4.png" maxWidth={448} />
+            </StyledImgWrapper>
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
               translateX={-700}
               translateY={720}
             >
               <StyledImg src="images/hero/bw-5.png" maxWidth={365} />
-            </StyledImgWrapper>
+            </StyledImgWrapper> */}
           </StyledImgCanvas>
 
           {/* ===========================4===================== */}
@@ -331,23 +340,23 @@ const Hero = () => {
               <StyledImg src="images/hero/bw-3.png" maxWidth={365} />
             </StyledImgWrapper>
 
-            <StyledImgWrapper
+            {/* <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
               translateX={-550}
               translateY={270}
             >
               <StyledImg src="images/hero/bw-4.png" maxWidth={448} />
-            </StyledImgWrapper>
+            </StyledImgWrapper> */}
 
-            {/* <StyledImgWrapper
+            <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
               translateX={-700}
               translateY={720}
             >
               <StyledImg src="images/hero/bw-5.png" maxWidth={365} />
-            </StyledImgWrapper> */}
+            </StyledImgWrapper>
 
             {/* color */}
 
@@ -360,14 +369,14 @@ const Hero = () => {
               <StyledImg src="images/hero/colored-2.png" maxWidth={310} />
             </StyledImgWrapper>
 
-            {/* <StyledImgWrapper
+            <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
-              translateX={-900}
-              translateY={100}
+              translateX={-1100}
+              translateY={70}
             >
               <StyledImg src="images/hero/colored-3.png" maxWidth={333} />
-            </StyledImgWrapper> */}
+            </StyledImgWrapper>
 
             <StyledImgWrapper
               height={screenSize.y * 1.4}
