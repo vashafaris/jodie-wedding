@@ -7,3 +7,8 @@ export const DEVICE_SIZE = {
   laptopL: '1440px',
   desktop: '2560px',
 };
+
+export const DEFAULT_HERO_SIZE = {
+  width: 3820,
+  height: 3350,
+};

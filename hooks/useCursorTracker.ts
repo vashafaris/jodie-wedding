@@ -20,12 +20,62 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
     y: containerRef?.current?.offsetHeight / 2,
   });
 
+  // const calculateX = x => {
+  //   if (x > 700) {
+  //     return 800;
+  //   }
+
+  //   if (x < 240) {
+  //     return 240;
+  //   }
+
+  //   return x;
+  // };
+
+  // const calculateY = y => {
+  //   if (y > 300) {
+  //     return 300;
+  //   }
+
+  //   return y;
+  // };
+
+  const calculateX = (containerX, mouseX) => {
+    const val = (containerX / 2 || 0) - mouseX * 2;
+
+    if (val > 890) {
+      return 890;
+    }
+
+    if (val < -1080) {
+      return -1080;
+    }
+
+    return val;
+  };
+
+  const calculateY = (containerY, mouseY) => {
+    const val = (containerY / 2 || 0) - mouseY * 2;
+
+    if (val < -670) {
+      return -670;
+    }
+
+    return val;
+  };
+
   const ticker = useCallback(() => {
-    if (!!containerRef.current.offsetWidth)
+    if (!!containerRef.current.offsetWidth) {
       setTransformPosition({
-        x: ((containerRef.current.offsetWidth / 4 || 0) - mousePosition.current.x) * 3,
-        y: ((containerRef.current.offsetHeight / 8 || 0) - mousePosition.current.y) * 3,
+        x: calculateX(containerRef.current.offsetWidth, mousePosition.current.x),
+        y: calculateY(containerRef.current.offsetHeight, mousePosition.current.y),
       });
+
+      // setTransformPosition({
+      //   x: ((containerRef.current.offsetWidth / 4 || 0) - calculateX(mousePosition.current.x)) * 4,
+      //   y: ((containerRef.current.offsetHeight / 8 || 0) - calculateY(mousePosition.current.y)) * 8,
+      // });
+    }
   }, [containerRef]);
 
   useEffect(() => {
@@ -44,10 +94,10 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
     let interval: NodeJS.Timeout;
 
     const timeout = setTimeout(() => {
-      window.addEventListener('mousemove', updateMousePosition);
-
       if (includeTouch) {
         window.addEventListener('touchmove', updateMousePosition);
+      } else {
+        window.addEventListener('mousemove', updateMousePosition);
       }
 
       interval = setInterval(() => {
@@ -56,9 +106,10 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
     }, 4000);
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
       if (includeTouch) {
         window.removeEventListener('touchmove', updateMousePosition);
+      } else {
+        window.removeEventListener('mousemove', updateMousePosition);
       }
 
       clearTimeout(timeout);
