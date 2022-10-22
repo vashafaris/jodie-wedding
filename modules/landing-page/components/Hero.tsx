@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable no-negated-condition */
 import { DEVICE_SIZE } from 'constants/device-size';
 import useCursorTracker from 'hooks/useCursorTracker';
@@ -158,7 +159,7 @@ const Hero = () => {
   // };
 
   const mousePosition = useCursorTracker({
-    includeTouch: true,
+    includeTouch: false,
     containerRef,
   });
 

@@ -103,7 +103,7 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
       interval = setInterval(() => {
         ticker();
       }, 33);
-    }, 4000);
+    }, 10);
 
     return () => {
       if (includeTouch) {
