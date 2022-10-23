@@ -89,6 +89,10 @@ const StyledComments = styled.section`
     .load-more-container {
       margin-top: 24px;
       align-self: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     button {
@@ -174,24 +178,32 @@ const Comments = () => {
       </div>
 
       <div className="list-comment-container">
-        {isLoading ? (
+        {isLoading && comments.length === 0 ? (
           <div className="comment-loading-container">
             <LoadingSpinner />
           </div>
         ) : (
           <>
-            {comments?.map(comment => (
+            {comments.map(comment => (
               <Comment key={comment._id} name={comment.name} comment={comment.comment} />
             ))}
             {limit < count ? (
-              <div className="load-more-container">
-                <button
-                  onClick={async () => {
-                    await fetchMore();
-                  }}
-                >
-                  MORE LOVELY MESSAGES
-                </button>
+              <div>
+                {isLoading ? (
+                  <div className="comment-loading-container">
+                    <LoadingSpinner />
+                  </div>
+                ) : (
+                  <div className="load-more-container">
+                    <button
+                      onClick={async () => {
+                        await fetchMore();
+                      }}
+                    >
+                      MORE LOVELY MESSAGES
+                    </button>
+                  </div>
+                )}
               </div>
             ) : null}
           </>

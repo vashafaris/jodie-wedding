@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import qs from 'query-string';
-import { CommentResponse } from 'types/comment';
+import { CommentObject, CommentResponse } from 'types/comment';
 
 import fetch from '~/lib/fetch';
 
@@ -10,6 +10,7 @@ export interface QueryParams {
 }
 export function useGetComments() {
   const [limit, setLimit] = useState<number>(5);
+  const [comments, setComments] = useState<CommentObject[]>([]);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -46,8 +47,14 @@ export function useGetComments() {
     setIsLoading(false);
   }, [buildURL, limit, mutate]);
 
+  useEffect(() => {
+    if ((data?.results.length ?? 0) > 0) {
+      setComments(data?.results ?? []);
+    }
+  }, [data?.results]);
+
   return {
-    comments: data?.results,
+    comments,
     count: data?.count ?? 0,
     info: data?.info,
     isLoading: (!data && !error) || isLoading,
