@@ -72,7 +72,36 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   height: 3350px; */
   transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
 
-  will-change: transform;
+  will-change: transform opacity;
+
+  opacity: 0;
+
+  -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
+  animation: 1.2s ease-out 0s normal forwards 1 fadein;
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   img {
     width: 50%;
@@ -98,6 +127,68 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   h1 {
     text-align: center;
   }
+
+  .image-animation {
+    opacity: 0;
+
+    -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
+    animation: 1.2s ease-out 0s normal forwards 1 fadein;
+
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+      66% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+      66% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  .name-animation {
+    opacity: 0;
+
+    -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
+    animation: 1.2s ease-out 0s normal forwards 1 fadein;
+
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+      66% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+      66% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
@@ -119,7 +210,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   height: 3350px;
   transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
 
-  will-change: transform;
+  will-change: transform opacity;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
     display: none;
@@ -148,6 +239,33 @@ interface StyledImgProps {
 const StyledImg = styled.img<StyledImgProps>`
   position: absolute;
   max-width: ${props => props.maxWidth}px;
+
+  -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
+  animation: 1.2s ease-out 0s normal forwards 1 fadein;
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const Hero = () => {
@@ -184,14 +302,18 @@ const Hero = () => {
             translateX={mousePosition.x * 0.98}
             translateY={mousePosition.y * 0.98}
           >
-            <img src="images/main-hero-avatar.png" alt="Putri and Jodie" />
-            <h2>join us to celebrate</h2>
-            <h1>
+            <img
+              className="image-animation"
+              src="images/main-hero-avatar.png"
+              alt="Putri and Jodie"
+            />
+            <h2 className="info-animation">join us to celebrate</h2>
+            <h1 className="name-animation">
               the wedding of
               <br />
               Putri & Jodie
             </h1>
-            <h2>18.12.22</h2>
+            <h2 className="date-animation">18.12.22</h2>
           </StyledTitle>
 
           {/* =======================3======================== */}

@@ -17,11 +17,7 @@ const StyledLoadingScreen = styled.main`
 `;
 
 const LoadingScreen = () => {
-  return (
-    <StyledLoadingScreen>
-      <h1>Putri & Jodie</h1>
-    </StyledLoadingScreen>
-  );
+  return <StyledLoadingScreen>{/* <h1>Putri & Jodie</h1> */}</StyledLoadingScreen>;
 };
 
 export default LoadingScreen;
