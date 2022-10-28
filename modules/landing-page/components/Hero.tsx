@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 type StyledImgWrapperProps = {
+  animationTiming: number;
   height: number;
   width: number;
   translateX: number;
@@ -70,20 +71,17 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   transform-style: preserve-3d;
   /* width: 3820px;
   height: 3350px; */
-  transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
 
   will-change: transform opacity;
 
   opacity: 0;
 
-  -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
-  animation: 1.2s ease-out 0s normal forwards 1 fadein;
+  -webkit-animation: 0.8s ease-out 0s normal forwards 1 fadein;
+  animation: 0.8s ease-out 0s normal forwards 1 fadein;
 
   @keyframes fadein {
     0% {
-      opacity: 0;
-    }
-    66% {
       opacity: 0;
     }
     100% {
@@ -93,9 +91,6 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
   @-webkit-keyframes fadein {
     0% {
-      opacity: 0;
-    }
-    66% {
       opacity: 0;
     }
     100% {
@@ -131,14 +126,11 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   .image-animation {
     opacity: 0;
 
-    -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
-    animation: 1.2s ease-out 0s normal forwards 1 fadein;
+    -webkit-animation: 0.8s ease-out 0s normal forwards 1 fadein;
+    animation: 0.8s ease-out 0s normal forwards 1 fadein;
 
     @keyframes fadein {
       0% {
-        opacity: 0;
-      }
-      66% {
         opacity: 0;
       }
       100% {
@@ -148,9 +140,6 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
     @-webkit-keyframes fadein {
       0% {
-        opacity: 0;
-      }
-      66% {
         opacity: 0;
       }
       100% {
@@ -162,14 +151,11 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   .name-animation {
     opacity: 0;
 
-    -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
-    animation: 1.2s ease-out 0s normal forwards 1 fadein;
+    -webkit-animation: 0.8s ease-out 0s normal forwards 1 fadein;
+    animation: 0.8s ease-out 0s normal forwards 1 fadein;
 
     @keyframes fadein {
       0% {
-        opacity: 0;
-      }
-      66% {
         opacity: 0;
       }
       100% {
@@ -179,9 +165,6 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
     @-webkit-keyframes fadein {
       0% {
-        opacity: 0;
-      }
-      66% {
         opacity: 0;
       }
       100% {
@@ -208,7 +191,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   transform-style: preserve-3d;
   width: 3820px;
   height: 3350px;
-  transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
 
   will-change: transform opacity;
 
@@ -234,20 +217,21 @@ const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
 interface StyledImgProps {
   maxWidth: number;
+  animationDelay: number;
 }
 
 const StyledImg = styled.img<StyledImgProps>`
   position: absolute;
   max-width: ${props => props.maxWidth}px;
 
-  -webkit-animation: 1.2s ease-out 0s normal forwards 1 fadein;
-  animation: 1.2s ease-out 0s normal forwards 1 fadein;
+  opacity: 0;
+
+  -webkit-animation: 4s ease-out 0s normal forwards 1 fadein;
+  animation: 2s ease-out 0s normal forwards 1 fadein;
+  animation-delay: ${props => props.animationDelay * 1.2}s;
 
   @keyframes fadein {
     0% {
-      opacity: 0;
-    }
-    66% {
       opacity: 0;
     }
     100% {
@@ -257,9 +241,6 @@ const StyledImg = styled.img<StyledImgProps>`
 
   @-webkit-keyframes fadein {
     0% {
-      opacity: 0;
-    }
-    66% {
       opacity: 0;
     }
     100% {
@@ -274,11 +255,6 @@ const Hero = () => {
     x: 0,
     y: 0,
   });
-
-  // const mousePosition = {
-  //   x: 0,
-  //   y: 0,
-  // };
 
   const mousePosition = useCursorTracker({
     includeTouch: false,
@@ -331,7 +307,7 @@ const Hero = () => {
               translateX={-300}
               translateY={-480}
             >
-              <StyledImg src="images/hero/colored-1.png" maxWidth={256} />
+              <StyledImg animationDelay={1.2} src="images/hero/colored-1.png" maxWidth={256} />
             </StyledImgWrapper>
 
             {/* <StyledImgWrapper
@@ -376,7 +352,7 @@ const Hero = () => {
               translateX={0}
               translateY={620}
             >
-              <StyledImg src="images/hero/colored-6.png" maxWidth={346} />
+              <StyledImg animationDelay={1.3} src="images/hero/colored-6.png" maxWidth={346} />
             </StyledImgWrapper>
 
             {/* <StyledImgWrapper
@@ -394,7 +370,7 @@ const Hero = () => {
               translateX={975}
               translateY={680}
             >
-              <StyledImg src="images/hero/colored-8.png" maxWidth={482} />
+              <StyledImg animationDelay={1.4} src="images/hero/colored-8.png" maxWidth={482} />
             </StyledImgWrapper>
 
             {/* bw */}
@@ -405,7 +381,7 @@ const Hero = () => {
               translateX={600}
               translateY={-500}
             >
-              <StyledImg src="images/hero/bw-2.png" maxWidth={365} />
+              <StyledImg animationDelay={1.2} src="images/hero/bw-2.png" maxWidth={365} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -414,7 +390,7 @@ const Hero = () => {
               translateX={-550}
               translateY={270}
             >
-              <StyledImg src="images/hero/bw-4.png" maxWidth={448} />
+              <StyledImg animationDelay={1.4} src="images/hero/bw-4.png" maxWidth={448} />
             </StyledImgWrapper>
 
             {/* <StyledImgWrapper
@@ -441,7 +417,7 @@ const Hero = () => {
               translateX={-800}
               translateY={-500}
             >
-              <StyledImg src="images/hero/bw-1.png" maxWidth={291} />
+              <StyledImg animationDelay={1.2} src="images/hero/bw-1.png" maxWidth={291} />
             </StyledImgWrapper>
 
             {/* <StyledImgWrapper
@@ -459,7 +435,7 @@ const Hero = () => {
               translateX={1050}
               translateY={-400}
             >
-              <StyledImg src="images/hero/bw-3.png" maxWidth={365} />
+              <StyledImg animationDelay={1.4} src="images/hero/bw-3.png" maxWidth={365} />
             </StyledImgWrapper>
 
             {/* <StyledImgWrapper
@@ -477,7 +453,7 @@ const Hero = () => {
               translateX={-700}
               translateY={720}
             >
-              <StyledImg src="images/hero/bw-5.png" maxWidth={365} />
+              <StyledImg animationDelay={1.6} src="images/hero/bw-5.png" maxWidth={365} />
             </StyledImgWrapper>
 
             {/* color */}
@@ -488,7 +464,7 @@ const Hero = () => {
               translateX={100}
               translateY={-780}
             >
-              <StyledImg src="images/hero/colored-2.png" maxWidth={310} />
+              <StyledImg animationDelay={1.5} src="images/hero/colored-2.png" maxWidth={310} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -497,7 +473,7 @@ const Hero = () => {
               translateX={-1100}
               translateY={70}
             >
-              <StyledImg src="images/hero/colored-3.png" maxWidth={333} />
+              <StyledImg animationDelay={1.7} src="images/hero/colored-3.png" maxWidth={333} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -506,7 +482,7 @@ const Hero = () => {
               translateX={550}
               translateY={100}
             >
-              <StyledImg src="images/hero/colored-4.png" maxWidth={333} />
+              <StyledImg animationDelay={1.4} src="images/hero/colored-4.png" maxWidth={333} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -515,7 +491,7 @@ const Hero = () => {
               translateX={420}
               translateY={525}
             >
-              <StyledImg src="images/hero/colored-7.png" maxWidth={333} />
+              <StyledImg animationDelay={1.3} src="images/hero/colored-7.png" maxWidth={333} />
             </StyledImgWrapper>
           </StyledImgCanvas>
         </StyledCanvas>
