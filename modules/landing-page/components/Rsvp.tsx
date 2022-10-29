@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Button from '~/components/button/button';
 
 const StyledRsvp = styled.section`
+  height: 50vh;
   min-height: 400px;
   background-image: linear-gradient(to bottom, #193053, #061c3d);
   color: white;
@@ -17,6 +18,7 @@ const StyledRsvp = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
   }
 
   .title-container {
@@ -55,6 +57,13 @@ const StyledRsvp = styled.section`
   }
 `;
 
+const StyledButton = styled(Button)`
+  @media (min-width: ${DEVICE_SIZE.tablet}) {
+    font-size: 28px;
+    padding: 12px 70px;
+  }
+`;
+
 const Rsvp = () => {
   const router = useRouter();
 
@@ -72,7 +81,7 @@ const Rsvp = () => {
         <span>Mohon konfirmasi kehadiran</span>
         <span>Bapak/Ibu/Saudara/i</span>
 
-        <Button>Klik untuk RSVP</Button>
+        <StyledButton types="secondary">Klik untuk RSVP</StyledButton>
       </div>
     </StyledRsvp>
   );

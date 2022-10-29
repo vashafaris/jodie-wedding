@@ -121,9 +121,6 @@ const TimeAndPlace = () => {
           <span>18 Desember 2022</span>
           <br />
           <span className="time">19.00 - 21.00 WIB</span>
-          <br />
-
-          <Button>Lihat Livestreaming</Button>
         </motion.div>
       </div>
 
