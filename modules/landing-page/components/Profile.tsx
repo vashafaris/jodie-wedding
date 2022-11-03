@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
+import ImageOverlay from '~/components/image-overlay';
 
 const StyledProfile = styled.section`
   min-height: 100vh;
@@ -61,6 +62,7 @@ const StyledProfile = styled.section`
       position: absolute;
       top: -100px;
       left: -80px;
+      z-index: 3;
 
       @media (max-width: ${DEVICE_SIZE.tablet}) {
         left: -40px;
@@ -72,6 +74,7 @@ const StyledProfile = styled.section`
       position: absolute;
       top: -100px;
       right: -80px;
+      z-index: 3;
 
       @media (max-width: ${DEVICE_SIZE.tablet}) {
         right: -40px;
@@ -150,8 +153,9 @@ const Profile = () => {
       putriImgAnimation.start({
         opacity: 1,
         transition: {
-          duration: 1,
+          duration: 0.5,
           ease: 'easeOut',
+          delay: 1,
         },
       });
 
@@ -159,8 +163,9 @@ const Profile = () => {
         opacity: 1,
         translateY: '0px',
         transition: {
+          duration: 0.5,
           ease: 'easeOut',
-          duration: 1,
+          delay: 1,
         },
       });
     }
@@ -171,8 +176,9 @@ const Profile = () => {
       jodieImgAnimation.start({
         opacity: 1,
         transition: {
-          duration: 1,
+          duration: 0.5,
           ease: 'easeOut',
+          delay: 1,
         },
       });
 
@@ -180,8 +186,9 @@ const Profile = () => {
         opacity: 1,
         translateY: '0px',
         transition: {
+          duration: 0.5,
           ease: 'easeOut',
-          duration: 1,
+          delay: 1,
         },
       });
     }
@@ -194,7 +201,7 @@ const Profile = () => {
           animate={putriInformationAnimation}
           initial={{
             opacity: 0,
-            translateY: '40px',
+            translateY: '20px',
           }}
           className="left-section info-container"
         >
@@ -218,16 +225,25 @@ const Profile = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          animate={putriImgAnimation}
-          initial={{
-            opacity: 0,
-          }}
-          className="right-section img-container"
-        >
-          <img src="images/red-flower.png" alt="Red Flower" className="red-flower" />
-          <img src="images/putri-profile-raw.png" alt="Profile Putri" className="profile-img" />
-        </motion.div>
+        <div className="right-section img-container">
+          <motion.img
+            animate={putriImgAnimation}
+            initial={{
+              opacity: 0,
+            }}
+            src="images/red-flower.png"
+            alt="Red Flower"
+            className="red-flower"
+          />
+          <ImageOverlay
+            alt="Profile Putri"
+            src="images/putri-profile-raw.png"
+            className="profile-img"
+            height={412}
+            width={292}
+            isInView={isPutriInView}
+          />
+        </div>
 
         <motion.div
           animate={putriInformationAnimation}
@@ -254,16 +270,26 @@ const Profile = () => {
       </div>
 
       <div className="profile" ref={jodieRef}>
-        <motion.div
-          animate={jodieImgAnimation}
-          initial={{
-            opacity: 0,
-          }}
-          className="left-section img-container"
-        >
-          <img src="images/blue-flower.png" alt="Blue Flower" className="blue-flower" />
-          <img src="images/jodie-profile-raw.png" alt="Profile Jodie" className="profile-img" />
-        </motion.div>
+        <div className="left-section img-container">
+          <motion.img
+            animate={jodieImgAnimation}
+            initial={{
+              opacity: 0,
+            }}
+            src="images/blue-flower.png"
+            alt="Blue Flower"
+            className="blue-flower"
+          />
+          {/* <img src="images/jodie-profile-raw.png" alt="Profile Jodie" className="profile-img" /> */}
+          <ImageOverlay
+            alt="Profile Jodie"
+            src="images/jodie-profile-raw.png"
+            className="profile-img"
+            height={412}
+            width={292}
+            isInView={isJodieInView}
+          />
+        </div>
 
         <motion.div
           animate={jodieInformationAnimation}

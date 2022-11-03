@@ -1,16 +1,24 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
+import clsx from 'clsx';
 import { DEVICE_SIZE } from 'constants/device-size';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
-const StyledQuotes = styled.section`
+interface StyledQuotesProps {
+  isInView: boolean;
+}
+
+const StyledQuotes = styled.section<StyledQuotesProps>`
+  ${props => props.isInView && `animation: zoomin 1.5s ease-out forwards;`}
   position: relative;
   height: 100vh;
   max-height: 600px;
   background-image: url('images/bg-2.png');
   background-size: cover;
+  overflow: hidden;
+  opacity: 0;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
     background-image: url('images/mobile/bg-2.png');
@@ -55,6 +63,21 @@ const StyledQuotes = styled.section`
       left: unset;
     }
   }
+
+  .animation {
+    opacity: 1;
+    background: red !important;
+    animation: zoomin 1.5s ease-out;
+  }
+
+  @keyframes zoomin {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const Quotes = () => {
@@ -72,19 +95,26 @@ const Quotes = () => {
         translateY: '0px',
         transition: {
           ease: 'easeOut',
-          duration: 1,
+          duration: 1.5,
+          delay: 1,
         },
       });
     }
   }, [isInView, quotesAnimation]);
 
   return (
-    <StyledQuotes ref={ref}>
+    <StyledQuotes
+      ref={ref}
+      className={clsx({
+        animation: isInView,
+      })}
+      isInView={isInView}
+    >
       <motion.div
         animate={quotesAnimation}
         initial={{
           opacity: 0,
-          translateY: '40px',
+          translateY: '20px',
         }}
         className="quotes"
       >

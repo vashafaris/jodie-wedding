@@ -28,6 +28,7 @@ const StyledOutfitTheme = styled.section`
       @media (max-width: ${DEVICE_SIZE.tablet}) {
         max-width: 100%;
         object-fit: contain;
+        margin-bottom: 20px;
       }
     }
   }
