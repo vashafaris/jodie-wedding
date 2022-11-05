@@ -75,6 +75,13 @@ const TimeAndPlace = () => {
     threshold: 0.4,
   });
 
+  const handleOpenMaps = () => {
+    const GMAPS_URL =
+      'https://www.google.com/maps/place/Jl.+Raya+Pasar+Minggu+No.KM+18.+10,+RT.14%2FRW.5,+Pejaten+Tim.,+Kec.+Ps.+Minggu,+Kota+Jakarta+Selatan,+Daerah+Khusus+Ibukota+Jakarta+12510/@-6.2690923,106.8419461,15z/data=!4m5!3m4!1s0x2e69f24672819403:0x19aaa28d6c97fc5b!8m2!3d-6.2690564!4d106.8466462';
+
+    window.open(GMAPS_URL, '_blank', 'noopener,noreferrer');
+  };
+
   useEffect(() => {
     if (isInView) {
       titleAnimation.start({
@@ -91,6 +98,7 @@ const TimeAndPlace = () => {
         transition: {
           duration: 1,
           ease: 'easeOut',
+          delay: 0.2,
         },
       });
     }
@@ -157,7 +165,7 @@ const TimeAndPlace = () => {
 
           <br />
 
-          <Button>Lihat Lokasi di Google Maps</Button>
+          <Button onClick={handleOpenMaps}>Lihat Lokasi di Google Maps</Button>
         </motion.div>
       </div>
     </StyledTimeAndPlace>
