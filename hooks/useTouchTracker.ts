@@ -21,7 +21,7 @@ const useTouchTracker = ({ containerRef }: UseMousePositionProps) => {
 
   const tickerMobile = useCallback(() => {
     if (!!containerRef.current.offsetWidth) {
-      setTransformPosition(prev => ({
+      setTransformPosition(() => ({
         x: mousePosition.current.x,
         y: mousePosition.current.y,
       }));
