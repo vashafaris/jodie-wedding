@@ -1,3 +1,4 @@
+import useDeviceDetect from 'hooks/useDeviceDetect';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoadingScreen from '~/components/loading-screen';
@@ -11,6 +12,7 @@ import Profile from '~/modules/landing-page/components/Profile';
 import Quotes from '~/modules/landing-page/components/Quotes';
 import Rsvp from '~/modules/landing-page/components/Rsvp';
 import TimeAndPlace from '~/modules/landing-page/components/TimeAndPlace';
+import HeroMobile from './components/HeroMobile';
 
 const StyledMain = styled.main`
   position: relative;
@@ -18,6 +20,8 @@ const StyledMain = styled.main`
 
 const LandingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  const { isMobile } = useDeviceDetect();
 
   const handleLoading = () => {
     setIsLoading(false);
@@ -35,7 +39,7 @@ const LandingPage = () => {
 
   return (
     <StyledMain>
-      <Hero />
+      {isMobile ? <HeroMobile /> : <Hero />}
       <Quotes />
       <Profile />
       <TimeAndPlace />

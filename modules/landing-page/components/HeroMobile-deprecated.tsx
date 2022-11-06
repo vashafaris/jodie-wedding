@@ -1,24 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable no-negated-condition */
 import { DEVICE_SIZE } from 'constants/device-size';
-import useCursorTracker from 'hooks/useCursorTracker';
 import useDeviceDetect from 'hooks/useDeviceDetect';
+import useTouchTracker from 'hooks/useTouchTracker';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 type StyledImgWrapperProps = {
-  height: number;
-  width: number;
   translateX: number;
   translateY: number;
-  isMobile: boolean;
 };
 
-const StyledHero = styled.section`
+const StyledHeroMobile = styled.section`
   position: relative;
   width: 100%;
   height: 100vh;
-  z-index: 2;
 `;
 
 const StyledGradient = styled.div`
@@ -33,7 +29,7 @@ const StyledGradient = styled.div`
 
 const StyledContainer = styled.div`
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,26 +40,17 @@ const StyledCanvas = styled.div`
   position: absolute;
   width: 102vw;
   height: 102vh;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: ${DEVICE_SIZE.tablet}) {
-    position: absolute;
-    top: 0;
-    overflow: auto;
-    width: 1800px;
-  }
 `;
 
 const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   style: {
     transform:
       props.translateY !== 0 ? `translate(${props.translateX}px, ${props.translateY}px)` : null,
-    height: props.height,
-    width: props.width,
-    transition: `transform ${props.isMobile ? '0.2s' : '4s'} cubic-bezier(0.33, 1, 0.68, 1)`,
+    transition: `transform 0.1s cubic-bezier(0.33, 1, 0.68, 1)`,
   },
 }))<StyledImgWrapperProps>`
   z-index: 10;
@@ -72,9 +59,16 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // transform-origin: center;
+  transform-origin: center;
   pointer-events: none;
   transform-style: preserve-3d;
+  overflow: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  width: 1200px;
+  height: 1600px;
 
   will-change: transform opacity transition;
 
@@ -181,9 +175,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   style: {
     transform:
       props.translateY !== 0 ? `translate(${props.translateX}px, ${props.translateY}px)` : null,
-    height: props.height,
-    width: props.width,
-    transition: `transform ${props.isMobile ? '0.2s' : '4s'} cubic-bezier(0.33, 1, 0.68, 1)`,
+    transition: `transform 0.1s cubic-bezier(0.33, 1, 0.68, 1)`,
   },
 }))<StyledImgWrapperProps>`
   position: absolute;
@@ -193,24 +185,20 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   transform-origin: center;
   pointer-events: none;
   transform-style: preserve-3d;
+  width: 3820px;
+  height: 3350px;
+
   will-change: transform opacity transition;
 
-  @media (min-width: ${DEVICE_SIZE.tablet}) {
-    width: 3820px;
-    height: 3350px;
-  }
-
-  @media (max-width: ${DEVICE_SIZE.tablet}) {
-    display: none;
-  }
+  // @media (max-width: ${DEVICE_SIZE.tablet}) {
+  //   display: none;
+  // }
 `;
 
 const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({
   style: {
     transform:
       props.translateY !== 0 ? `translate(${props.translateX}px, ${props.translateY}px)` : null,
-    height: props.height,
-    width: props.width,
   },
 }))<StyledImgWrapperProps>`
   transition: ease-in-out opacity 1s;
@@ -254,7 +242,7 @@ const StyledImg = styled.img<StyledImgProps>`
   }
 `;
 
-const Hero = () => {
+const HeroMobile = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [screenSize, setScreenSize] = useState({
     x: 0,
@@ -263,8 +251,7 @@ const Hero = () => {
 
   const { isMobile } = useDeviceDetect();
 
-  const mousePosition = useCursorTracker({
-    includeTouch: isMobile,
+  const mousePosition = useTouchTracker({
     containerRef,
   });
 
@@ -276,16 +263,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <StyledHero>
+    <StyledHeroMobile>
       <StyledContainer>
         <StyledCanvas>
-          <StyledTitle
-            height={screenSize.y * 1.4}
-            width={screenSize.x * 1.4}
-            translateX={mousePosition.x * 0.98}
-            translateY={mousePosition.y * 0.98}
-            isMobile={isMobile}
-          >
+          <StyledTitle translateX={mousePosition.x} translateY={mousePosition.y}>
             <img
               className="image-animation"
               src="images/main-hero-avatar.png"
@@ -306,8 +287,8 @@ const Hero = () => {
             ref={containerRef}
             height={screenSize.y * 1.4}
             width={screenSize.x * 1.4}
-            translateX={mousePosition.x * 0.92}
-            translateY={mousePosition.y * 0.92}
+            translateX={mousePosition.x}
+            translateY={mousePosition.y}
             isMobile={isMobile}
           >
             <StyledImgWrapper
@@ -319,6 +300,42 @@ const Hero = () => {
               <StyledImg animationDelay={1.2} src="images/hero/colored-1.png" maxWidth={256} />
             </StyledImgWrapper>
 
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={0}
+              translateY={-780}
+            >
+              <StyledImg src="images/hero/colored-2.png" maxWidth={310} />
+            </StyledImgWrapper> */}
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-1100}
+              translateY={70}
+            >
+              <StyledImg src="images/hero/colored-3.png" maxWidth={333} />
+            </StyledImgWrapper> */}
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={550}
+              translateY={100}
+            >
+              <StyledImg src="images/hero/colored-4.png" maxWidth={333} />
+            </StyledImgWrapper> */}
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={950}
+              translateY={200}
+            >
+              <StyledImg src="images/hero/colored-5.png" maxWidth={333} />
+            </StyledImgWrapper> */}
+
             <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
@@ -327,6 +344,16 @@ const Hero = () => {
             >
               <StyledImg animationDelay={1.3} src="images/hero/colored-6.png" maxWidth={346} />
             </StyledImgWrapper>
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={420}
+              translateY={525}
+            >
+              <StyledImg src="images/hero/colored-7.png" maxWidth={333} />
+            </StyledImgWrapper> */}
+
             <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
@@ -355,6 +382,15 @@ const Hero = () => {
             >
               <StyledImg animationDelay={1.4} src="images/hero/bw-4.png" maxWidth={448} />
             </StyledImgWrapper>
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-700}
+              translateY={720}
+            >
+              <StyledImg src="images/hero/bw-5.png" maxWidth={365} />
+            </StyledImgWrapper> */}
           </StyledImgCanvas>
 
           {/* ===========================4===================== */}
@@ -362,8 +398,8 @@ const Hero = () => {
           <StyledImgCanvas
             height={screenSize.y * 1.4}
             width={screenSize.x * 1.4}
-            translateX={mousePosition.x * 0.87}
-            translateY={mousePosition.y * 0.87}
+            translateX={mousePosition.x}
+            translateY={mousePosition.y}
             isMobile={isMobile}
           >
             <StyledImgWrapper
@@ -375,6 +411,15 @@ const Hero = () => {
               <StyledImg animationDelay={1.2} src="images/hero/bw-1.png" maxWidth={291} />
             </StyledImgWrapper>
 
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={600}
+              translateY={-500}
+            >
+              <StyledImg src="images/hero/bw-2.png" maxWidth={365} />
+            </StyledImgWrapper> */}
+
             <StyledImgWrapper
               height={screenSize.y * 1.4}
               width={screenSize.x * 1.4}
@@ -383,6 +428,15 @@ const Hero = () => {
             >
               <StyledImg animationDelay={1.4} src="images/hero/bw-3.png" maxWidth={365} />
             </StyledImgWrapper>
+
+            {/* <StyledImgWrapper
+              height={screenSize.y * 1.4}
+              width={screenSize.x * 1.4}
+              translateX={-550}
+              translateY={270}
+            >
+              <StyledImg src="images/hero/bw-4.png" maxWidth={448} />
+            </StyledImgWrapper> */}
 
             <StyledImgWrapper
               height={screenSize.y * 1.4}
@@ -433,10 +487,9 @@ const Hero = () => {
           </StyledImgCanvas>
         </StyledCanvas>
       </StyledContainer>
-
       <StyledGradient />
-    </StyledHero>
+    </StyledHeroMobile>
   );
 };
 
-export default Hero;
+export default HeroMobile;

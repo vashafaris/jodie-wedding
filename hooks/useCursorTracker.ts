@@ -60,16 +60,11 @@ const useCursorTracker = ({ includeTouch, containerRef }: UseMousePositionProps)
   };
 
   const ticker = useCallback(() => {
-    if (!!containerRef.current.offsetWidth) {
+    if (!!containerRef?.current?.offsetWidth) {
       setTransformPosition({
         x: calculateX(containerRef.current.offsetWidth, mousePosition.current.x),
         y: calculateY(containerRef.current.offsetHeight, mousePosition.current.y),
       });
-
-      // setTransformPosition({
-      //   x: ((containerRef.current.offsetWidth / 4 || 0) - calculateX(mousePosition.current.x)) * 4,
-      //   y: ((containerRef.current.offsetHeight / 8 || 0) - calculateY(mousePosition.current.y)) * 8,
-      // });
     }
   }, [containerRef]);
 
