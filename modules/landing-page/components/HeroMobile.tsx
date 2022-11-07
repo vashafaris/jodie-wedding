@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { DEVICE_SIZE } from 'constants/device-size';
+
 const StyledTitle = styled.div`
   -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
   animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
-  animation-delay: 5s;
+  animation-delay: 2.7s;
 
   opacity: 0;
   z-index: 10;
@@ -90,6 +91,7 @@ const StyledTitle = styled.div`
 `;
 
 const StyledHeroMobile = styled.section`
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -111,7 +113,7 @@ const StyledHeroMobile = styled.section`
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
-    animation-delay: 1.2s, 1.7s;
+    animation-delay: 0.6s, 1.1s;
   }
 
   .img-3 {
@@ -121,7 +123,7 @@ const StyledHeroMobile = styled.section`
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
-    animation-delay: 2.4s, 2.9s;
+    animation-delay: 1.2s, 1.7s;
   }
 
   .img-4 {
@@ -131,7 +133,7 @@ const StyledHeroMobile = styled.section`
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
-    animation-delay: 3.6s, 4.1s;
+    animation-delay: 1.8s, 2.3s;
   }
 
   @keyframes fadein {

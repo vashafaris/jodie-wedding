@@ -1,7 +1,7 @@
 import useDeviceDetect from 'hooks/useDeviceDetect';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import LoadingScreen from '~/components/loading-screen';
+// import LoadingScreen from '~/components/loading-screen';
 
 import Comments from '~/modules/landing-page/components/Comments';
 import Farewell from '~/modules/landing-page/components/Farewell';
@@ -19,23 +19,23 @@ const StyledMain = styled.main`
 `;
 
 const LandingPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const { isMobile } = useDeviceDetect();
 
-  const handleLoading = () => {
-    setIsLoading(false);
-  };
+  // const handleLoading = () => {
+  //   setIsLoading(false);
+  // };
 
-  useEffect(() => {
-    window.addEventListener('load', handleLoading);
+  // useEffect(() => {
+  //   window.addEventListener('load', handleLoading);
 
-    return () => window.removeEventListener('load', handleLoading);
-  }, []);
+  //   return () => window.removeEventListener('load', handleLoading);
+  // }, []);
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
+  // if (isLoading) {
+  //   return <LoadingScreen />;
+  // }
 
   return (
     <StyledMain>
