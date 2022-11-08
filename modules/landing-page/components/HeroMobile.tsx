@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
@@ -238,11 +239,6 @@ const HeroMobile = () => {
         <h2 className="first-row-animation">join us to celebrate</h2>
         <h1 className="second-row-animation">the wedding of</h1>
         <h1 className="third-row-animation">Putri & Jodie</h1>
-        {/* <h1 className="name-animation">
-          <span className="second-row-animation">the wedding of</span>
-          <br />
-          <span className="third-row-animation">Putri & Jodie</span>
-        </h1> */}
         <h2 className="fourth-row-animation">18.12.22</h2>
       </StyledTitle>
     </StyledHeroMobile>

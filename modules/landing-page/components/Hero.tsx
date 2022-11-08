@@ -11,7 +11,6 @@ type StyledImgWrapperProps = {
   width: number;
   translateX: number;
   translateY: number;
-  isMobile: boolean;
 };
 
 const StyledHero = styled.section`
@@ -63,7 +62,7 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
       props.translateY !== 0 ? `translate(${props.translateX}px, ${props.translateY}px)` : null,
     height: props.height,
     width: props.width,
-    transition: `transform ${props.isMobile ? '0.2s' : '4s'} cubic-bezier(0.33, 1, 0.68, 1)`,
+    transition: `transform 4s cubic-bezier(0.33, 1, 0.68, 1)`,
   },
 }))<StyledImgWrapperProps>`
   z-index: 10;
@@ -72,16 +71,11 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // transform-origin: center;
+  transform-origin: center;
   pointer-events: none;
   transform-style: preserve-3d;
 
-  will-change: transform opacity transition;
-
-  opacity: 0;
-
-  -webkit-animation: 0.8s ease-out 0s normal forwards 1 fadein;
-  animation: 0.8s ease-out 0s normal forwards 1 fadein;
+  will-change: transform opacity transition clip-path;
 
   @keyframes fadein {
     0% {
@@ -128,51 +122,75 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
   .image-animation {
     opacity: 0;
+    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeins;
+    animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeins;
+    animation-delay: 3s;
+  }
 
-    -webkit-animation: 0.8s ease-out 0s normal forwards 1 fadein;
-    animation: 0.8s ease-out 0s normal forwards 1 fadein;
+  .first-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
 
-    @keyframes fadein {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+  .second-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 0.2s;
+  }
+
+  .third-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 0.4s;
+  }
+
+  .fourth-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeins {
+    0% {
+      opacity: 0;
     }
-
-    @-webkit-keyframes fadein {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+    100% {
+      opacity: 1;
     }
   }
 
-  .name-animation {
-    opacity: 0;
-
-    -webkit-animation: 0.8s ease-out 0s normal forwards 1 fadein;
-    animation: 0.8s ease-out 0s normal forwards 1 fadein;
-
-    @keyframes fadein {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+  @-webkit-keyframes fadeins {
+    0% {
+      opacity: 0;
     }
+    100% {
+      opacity: 1;
+    }
+  }
 
-    @-webkit-keyframes fadein {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+  @keyframes clipPathUp {
+    0% {
+      -webkit-clip-path: inset(100% 0 0 0);
+      clip-path: inset(100% 0 0 0);
+      opacity: 0;
+    }
+    100% {
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes clipPathUp {
+    0% {
+      -webkit-clip-path: inset(100% 0 0 0);
+      clip-path: inset(100% 0 0 0);
+      opacity: 0;
+    }
+    100% {
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
     }
   }
 `;
@@ -183,7 +201,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
       props.translateY !== 0 ? `translate(${props.translateX}px, ${props.translateY}px)` : null,
     height: props.height,
     width: props.width,
-    transition: `transform ${props.isMobile ? '0.2s' : '4s'} cubic-bezier(0.33, 1, 0.68, 1)`,
+    transition: `transform 4s cubic-bezier(0.33, 1, 0.68, 1)`,
   },
 }))<StyledImgWrapperProps>`
   position: absolute;
@@ -193,7 +211,7 @@ const StyledImgCanvas = styled.div.attrs((props: StyledImgWrapperProps) => ({
   transform-origin: center;
   pointer-events: none;
   transform-style: preserve-3d;
-  will-change: transform opacity transition;
+  will-change: transform opacity transition clip-path;
 
   @media (min-width: ${DEVICE_SIZE.tablet}) {
     width: 3820px;
@@ -222,7 +240,6 @@ const StyledImgWrapper = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
 interface StyledImgProps {
   maxWidth: number;
-  animationDelay: number;
 }
 
 const StyledImg = styled.img<StyledImgProps>`
@@ -231,15 +248,20 @@ const StyledImg = styled.img<StyledImgProps>`
 
   opacity: 0;
 
-  -webkit-animation: 4s ease-out 0s normal forwards 1 fadein;
-  animation: 2s ease-out 0s normal forwards 1 fadein;
-  animation-delay: ${props => props.animationDelay * 1.2}s;
+  -webkit-animation: 1s ease-out 0s normal forwards 1 fadein;
+  animation: 1s ease-out 0s normal forwards 1 fadein;
+  animation-delay: 3s;
 
   @keyframes fadein {
     0% {
       opacity: 0;
+      scale: 1.2;
+    }
+    50% {
+      opacity: 1;
     }
     100% {
+      scale: 1;
       opacity: 1;
     }
   }
@@ -247,8 +269,13 @@ const StyledImg = styled.img<StyledImgProps>`
   @-webkit-keyframes fadein {
     0% {
       opacity: 0;
+      scale: 1.2;
+    }
+    50% {
+      opacity: 1;
     }
     100% {
+      scale: 1;
       opacity: 1;
     }
   }
@@ -284,20 +311,16 @@ const Hero = () => {
             width={screenSize.x * 1.4}
             translateX={mousePosition.x * 0.98}
             translateY={mousePosition.y * 0.98}
-            isMobile={isMobile}
           >
             <img
               className="image-animation"
               src="images/main-hero-avatar.png"
               alt="Putri and Jodie"
             />
-            <h2 className="info-animation">join us to celebrate</h2>
-            <h1 className="name-animation">
-              the wedding of
-              <br />
-              Putri & Jodie
-            </h1>
-            <h2 className="date-animation">18.12.22</h2>
+            <h2 className="first-row-animation">join us to celebrate</h2>
+            <h1 className="second-row-animation">the wedding of</h1>
+            <h1 className="third-row-animation">Putri & Jodie</h1>
+            <h2 className="fourth-row-animation">18.12.22</h2>
           </StyledTitle>
 
           {/* =======================3======================== */}
@@ -308,7 +331,6 @@ const Hero = () => {
             width={screenSize.x * 1.4}
             translateX={mousePosition.x * 0.92}
             translateY={mousePosition.y * 0.92}
-            isMobile={isMobile}
           >
             <StyledImgWrapper
               height={screenSize.y * 1.4}
@@ -316,7 +338,7 @@ const Hero = () => {
               translateX={-300}
               translateY={-480}
             >
-              <StyledImg animationDelay={1.2} src="images/hero/colored-1.png" maxWidth={256} />
+              <StyledImg src="images/hero/colored-1.png" maxWidth={256} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -325,7 +347,7 @@ const Hero = () => {
               translateX={0}
               translateY={620}
             >
-              <StyledImg animationDelay={1.3} src="images/hero/colored-6.png" maxWidth={346} />
+              <StyledImg src="images/hero/colored-6.png" maxWidth={346} />
             </StyledImgWrapper>
             <StyledImgWrapper
               height={screenSize.y * 1.4}
@@ -333,7 +355,7 @@ const Hero = () => {
               translateX={975}
               translateY={680}
             >
-              <StyledImg animationDelay={1.4} src="images/hero/colored-8.png" maxWidth={482} />
+              <StyledImg src="images/hero/colored-8.png" maxWidth={482} />
             </StyledImgWrapper>
 
             {/* bw */}
@@ -344,7 +366,7 @@ const Hero = () => {
               translateX={600}
               translateY={-500}
             >
-              <StyledImg animationDelay={1.2} src="images/hero/bw-2.png" maxWidth={365} />
+              <StyledImg src="images/hero/bw-2.png" maxWidth={365} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -353,7 +375,7 @@ const Hero = () => {
               translateX={-550}
               translateY={270}
             >
-              <StyledImg animationDelay={1.4} src="images/hero/bw-4.png" maxWidth={448} />
+              <StyledImg src="images/hero/bw-4.png" maxWidth={448} />
             </StyledImgWrapper>
           </StyledImgCanvas>
 
@@ -364,7 +386,6 @@ const Hero = () => {
             width={screenSize.x * 1.4}
             translateX={mousePosition.x * 0.87}
             translateY={mousePosition.y * 0.87}
-            isMobile={isMobile}
           >
             <StyledImgWrapper
               height={screenSize.y * 1.4}
@@ -372,7 +393,7 @@ const Hero = () => {
               translateX={-800}
               translateY={-500}
             >
-              <StyledImg animationDelay={1.2} src="images/hero/bw-1.png" maxWidth={291} />
+              <StyledImg src="images/hero/bw-1.png" maxWidth={291} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -381,7 +402,7 @@ const Hero = () => {
               translateX={1050}
               translateY={-400}
             >
-              <StyledImg animationDelay={1.4} src="images/hero/bw-3.png" maxWidth={365} />
+              <StyledImg src="images/hero/bw-3.png" maxWidth={365} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -390,7 +411,7 @@ const Hero = () => {
               translateX={-700}
               translateY={720}
             >
-              <StyledImg animationDelay={1.6} src="images/hero/bw-5.png" maxWidth={365} />
+              <StyledImg src="images/hero/bw-5.png" maxWidth={365} />
             </StyledImgWrapper>
 
             {/* color */}
@@ -401,7 +422,7 @@ const Hero = () => {
               translateX={100}
               translateY={-780}
             >
-              <StyledImg animationDelay={1.5} src="images/hero/colored-2.png" maxWidth={310} />
+              <StyledImg src="images/hero/colored-2.png" maxWidth={310} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -410,7 +431,7 @@ const Hero = () => {
               translateX={-1100}
               translateY={70}
             >
-              <StyledImg animationDelay={1.7} src="images/hero/colored-3.png" maxWidth={333} />
+              <StyledImg src="images/hero/colored-3.png" maxWidth={333} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -419,7 +440,7 @@ const Hero = () => {
               translateX={550}
               translateY={100}
             >
-              <StyledImg animationDelay={1.4} src="images/hero/colored-4.png" maxWidth={333} />
+              <StyledImg src="images/hero/colored-4.png" maxWidth={333} />
             </StyledImgWrapper>
 
             <StyledImgWrapper
@@ -428,7 +449,7 @@ const Hero = () => {
               translateX={420}
               translateY={525}
             >
-              <StyledImg animationDelay={1.3} src="images/hero/colored-7.png" maxWidth={333} />
+              <StyledImg src="images/hero/colored-7.png" maxWidth={333} />
             </StyledImgWrapper>
           </StyledImgCanvas>
         </StyledCanvas>
