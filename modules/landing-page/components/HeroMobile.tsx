@@ -7,7 +7,7 @@ import { DEVICE_SIZE } from 'constants/device-size';
 const StyledTitle = styled.div`
   -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
   animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
-  animation-delay: 2.7s;
+  animation-delay: 3s;
 
   opacity: 0;
   z-index: 10;
@@ -27,7 +27,7 @@ const StyledTitle = styled.div`
     max-width: 600px;
 
     @media (max-width: ${DEVICE_SIZE.tablet}) {
-      width: 60%;
+      width: 90%;
     }
   }
 
