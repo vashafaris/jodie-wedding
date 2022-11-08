@@ -5,11 +5,6 @@ import styled from 'styled-components';
 import { DEVICE_SIZE } from 'constants/device-size';
 
 const StyledTitle = styled.div`
-  -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
-  animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
-  animation-delay: 3s;
-
-  opacity: 0;
   z-index: 10;
   position: absolute;
   display: flex;
@@ -45,12 +40,40 @@ const StyledTitle = styled.div`
 
   h1 {
     text-align: center;
+
+    animation: clipPathUp 2s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 3.1s;
   }
 
   .image-animation {
+    opacity: 0;
+    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
+    animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
+    animation-delay: 4.8s;
   }
 
-  .name-animation {
+  .first-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 1.6s;
+  }
+
+  .second-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 2s;
+  }
+
+  .third-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 2.2s;
+  }
+
+  .fourth-row-animation {
+    opacity: 0;
+    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 2.4s;
   }
 
   @keyframes fadein {
@@ -86,6 +109,32 @@ const StyledTitle = styled.div`
     }
     100% {
       opacity: 0;
+    }
+  }
+
+  @keyframes clipPathUp {
+    0% {
+      -webkit-clip-path: inset(100% 0 0 0);
+      clip-path: inset(100% 0 0 0);
+      opacity: 0;
+    }
+    100% {
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes clipPathUp {
+    0% {
+      -webkit-clip-path: inset(100% 0 0 0);
+      clip-path: inset(100% 0 0 0);
+      opacity: 0;
+    }
+    100% {
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
     }
   }
 `;
@@ -186,13 +235,15 @@ const HeroMobile = () => {
 
       <StyledTitle>
         <img className="image-animation" src="images/main-hero-avatar.png" alt="Putri and Jodie" />
-        <h2 className="info-animation">join us to celebrate</h2>
-        <h1 className="name-animation">
-          the wedding of
+        <h2 className="first-row-animation">join us to celebrate</h2>
+        <h1 className="second-row-animation">the wedding of</h1>
+        <h1 className="third-row-animation">Putri & Jodie</h1>
+        {/* <h1 className="name-animation">
+          <span className="second-row-animation">the wedding of</span>
           <br />
-          Putri & Jodie
-        </h1>
-        <h2 className="date-animation">18.12.22</h2>
+          <span className="third-row-animation">Putri & Jodie</span>
+        </h1> */}
+        <h2 className="fourth-row-animation">18.12.22</h2>
       </StyledTitle>
     </StyledHeroMobile>
   );
