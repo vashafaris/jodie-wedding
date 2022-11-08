@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import LoadingSpinner from '../loading-spinner';
 
 const StyledLoadingScreen = styled.main`
   min-height: 100vh;
@@ -17,7 +18,11 @@ const StyledLoadingScreen = styled.main`
 `;
 
 const LoadingScreen = () => {
-  return <StyledLoadingScreen>{/* <h1>Putri & Jodie</h1> */}</StyledLoadingScreen>;
+  return (
+    <StyledLoadingScreen>
+      <LoadingSpinner />
+    </StyledLoadingScreen>
+  );
 };
 
 export default LoadingScreen;
