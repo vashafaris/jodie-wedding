@@ -34,9 +34,6 @@ const StyledOutfitTheme = styled.section`
   }
 
   .information-container {
-    // opacity: 0;
-    // transform: translateY(40px);
-
     display: flex;
     flex-direction: column;
     flex: 1;

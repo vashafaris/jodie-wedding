@@ -129,24 +129,24 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
 
   .first-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
   }
 
   .second-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
     animation-delay: 0.2s;
   }
 
   .third-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
     animation-delay: 0.4s;
   }
 
   .fourth-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
     animation-delay: 0.6s;
   }
 
@@ -168,26 +168,30 @@ const StyledTitle = styled.div.attrs((props: StyledImgWrapperProps) => ({
     }
   }
 
-  @keyframes clipPathUp {
+  @keyframes clipPathDown {
     0% {
-      -webkit-clip-path: inset(100% 0 0 0);
-      clip-path: inset(100% 0 0 0);
+      transform: translateY(28px);
+      -webkit-clip-path: inset(0 0 100% 0);
+      clip-path: inset(0 0 100% 0);
       opacity: 0;
     }
     100% {
+      transform: translateY(0);
       -webkit-clip-path: inset(0 0 0 0);
       clip-path: inset(0 0 0 0);
       opacity: 1;
     }
   }
 
-  @-webkit-keyframes clipPathUp {
+  @-webkit-keyframes clipPathDown {
     0% {
-      -webkit-clip-path: inset(100% 0 0 0);
-      clip-path: inset(100% 0 0 0);
+      transform: translateY(28px);
+      -webkit-clip-path: inset(0 0 100% 0);
+      clip-path: inset(0 0 100% 0);
       opacity: 0;
     }
     100% {
+      transform: translateY(0);
       -webkit-clip-path: inset(0 0 0 0);
       clip-path: inset(0 0 0 0);
       opacity: 1;

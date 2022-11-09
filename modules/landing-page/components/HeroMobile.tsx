@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { DEVICE_SIZE } from 'constants/device-size';
@@ -41,40 +40,37 @@ const StyledTitle = styled.div`
 
   h1 {
     text-align: center;
-
-    animation: clipPathUp 2s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-    animation-delay: 3.1s;
   }
 
   .image-animation {
     opacity: 0;
     -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein;
-    animation-delay: 4.8s;
+    animation-delay: 5.2s;
   }
 
   .first-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-    animation-delay: 1.6s;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 2.2s;
   }
 
   .second-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-    animation-delay: 2s;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 2.5s;
   }
 
   .third-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-    animation-delay: 2.2s;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 2.8s;
   }
 
   .fourth-row-animation {
     opacity: 0;
-    animation: clipPathUp 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-    animation-delay: 2.4s;
+    animation: clipPathDown 3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation-delay: 3.1s;
   }
 
   @keyframes fadein {
@@ -138,6 +134,36 @@ const StyledTitle = styled.div`
       opacity: 1;
     }
   }
+
+  @keyframes clipPathDown {
+    0% {
+      transform: translateY(28px);
+      -webkit-clip-path: inset(0 0 100% 0);
+      clip-path: inset(0 0 100% 0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes clipPathDown {
+    0% {
+      transform: translateY(28px);
+      -webkit-clip-path: inset(0 0 100% 0);
+      clip-path: inset(0 0 100% 0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+    }
+  }
 `;
 
 const StyledHeroMobile = styled.section`
@@ -186,6 +212,16 @@ const StyledHeroMobile = styled.section`
     animation-delay: 1.8s, 2.3s;
   }
 
+  .img-5 {
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    animation-delay: 2.4s, 2.9s;
+  }
+
   @keyframes fadein {
     0% {
       opacity: 0;
@@ -226,13 +262,35 @@ const StyledHeroMobile = styled.section`
 const HeroMobile = () => {
   return (
     <StyledHeroMobile>
-      <motion.img className="img-1" src="images/putri-profile-raw.png" alt="Putri" />
+      <img
+        className="img-1"
+        src="images/hero-mobile/hero-mobile-1.png"
+        alt="Putri & Jodie Pose 1"
+      />
 
-      <motion.img className="img-2" src="images/jodie-profile-raw.png" alt="Jodie" />
+      <img
+        className="img-2"
+        src="images/hero-mobile/hero-mobile-2.png"
+        alt="Putri & Jodie Pose 2"
+      />
 
-      <motion.img className="img-3" src="images/hero/bw-1.png" alt="Putri & Jodie B/W" />
+      <img
+        className="img-3"
+        src="images/hero-mobile/hero-mobile-3.png"
+        alt="Putri & Jodie Pose 3"
+      />
 
-      <motion.img className="img-4" src="images/hero/colored-1.png" alt="Putri & Jodie Colored" />
+      <img
+        className="img-4"
+        src="images/hero-mobile/hero-mobile-4.png"
+        alt="Putri & Jodie Pose 4"
+      />
+
+      <img
+        className="img-5"
+        src="images/hero-mobile/hero-mobile-5.png"
+        alt="Putri & Jodie Pose 5"
+      />
 
       <StyledTitle>
         <img className="image-animation" src="images/main-hero-avatar.png" alt="Putri and Jodie" />
