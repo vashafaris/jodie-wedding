@@ -34,6 +34,8 @@ interface ButtonProps {
   onClick?: () => void;
   isLoading?: boolean;
   types?: 'primary' | 'secondary';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  style?: any;
 }
 
 const Button = ({
@@ -42,9 +44,10 @@ const Button = ({
   onClick,
   isLoading = false,
   types = 'primary',
+  style,
   ...rest
 }: ButtonProps) => (
-  <StyledButton className={className} types={types} onClick={onClick} {...rest}>
+  <StyledButton className={className} types={types} onClick={onClick} style={style} {...rest}>
     {isLoading ? <LoadingSpinner /> : children}
   </StyledButton>
 );

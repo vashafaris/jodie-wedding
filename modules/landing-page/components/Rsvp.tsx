@@ -18,7 +18,7 @@ const StyledRsvp = styled.section<StyledRsvpProps>`
     animation: 1s cubic-bezier(0.87, 0, 0.13, 1) forwards background-easing;
   `}
 
-  height: 50vh;
+  height: 100vh;
   min-height: 400px;
   background-image: linear-gradient(to bottom, #193053, #061c3d);
   color: white;

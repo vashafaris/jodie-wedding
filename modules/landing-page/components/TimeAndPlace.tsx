@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { DEVICE_SIZE } from 'constants/device-size';
 import { motion, useAnimation } from 'framer-motion';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
@@ -67,6 +68,10 @@ const StyledTimeAndPlace = styled.section`
 `;
 
 const TimeAndPlace = () => {
+  const router = useRouter();
+
+  const time = router.query.p === '1' ? '11.00 - 13.00' : '15.30 - 17.30';
+
   const titleAnimation = useAnimation();
   const informationAnimation = useAnimation();
 
@@ -127,7 +132,7 @@ const TimeAndPlace = () => {
           <span>Minggu,</span>
           <span>18 Desember 2022</span>
           <br />
-          <span className="time">19.00 - 21.00 WIB</span>
+          <span className="time">{time} WIB</span>
         </motion.div>
       </div>
 

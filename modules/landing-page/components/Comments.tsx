@@ -12,7 +12,7 @@ import { useGetComments } from '../hooks/get-comments';
 
 const StyledComment = styled.section`
   padding: 24px 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   &:last-of-type {
     border-bottom: none;
@@ -24,7 +24,8 @@ const StyledComment = styled.section`
 
   span {
     color: #828282;
-    font-weight: bold;
+    // font-weight: bold;
+    font-weight: 400;
   }
 
   p {
@@ -171,7 +172,11 @@ const Comments = () => {
             value={message}
           />
 
-          <Button isLoading={isSubmitLoading} onClick={handlePostComment}>
+          <Button
+            style={{ padding: '4px 32px' }}
+            isLoading={isSubmitLoading}
+            onClick={handlePostComment}
+          >
             Kirim
           </Button>
         </div>
