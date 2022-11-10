@@ -9,7 +9,7 @@ interface TextAreaProps {
 }
 
 const StyledTextArea = styled.textarea`
-  padding: 24px;
+  padding: 12px;
   border: 1px solid #bdbdbd;
   color: black;
 `;
