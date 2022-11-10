@@ -76,8 +76,7 @@ const TimeAndPlace = () => {
   });
 
   const handleOpenMaps = () => {
-    const GMAPS_URL =
-      'https://www.google.com/maps/place/Jl.+Raya+Pasar+Minggu+No.KM+18.+10,+RT.14%2FRW.5,+Pejaten+Tim.,+Kec.+Ps.+Minggu,+Kota+Jakarta+Selatan,+Daerah+Khusus+Ibukota+Jakarta+12510/@-6.2690923,106.8419461,15z/data=!4m5!3m4!1s0x2e69f24672819403:0x19aaa28d6c97fc5b!8m2!3d-6.2690564!4d106.8466462';
+    const GMAPS_URL = 'https://maps.app.goo.gl/QbmFVTpTsXxindWH9?g_st=ic';
 
     window.open(GMAPS_URL, '_blank', 'noopener,noreferrer');
   };
@@ -151,16 +150,14 @@ const TimeAndPlace = () => {
           }}
           className="information"
         >
-          <span>Kembali Ke Rumah Sarwono</span>
+          <span>Kediaman Mempelai Wanita</span>
 
           <br />
 
           <span className="address">
-            Jl. Raya Pasar Minggu KM 18.2
+            Jalan MPR II no. 8A Cilandak
             <br />
-            RT. 12 / RW.1 - Ragunan
-            <br />
-            Kec. Pasar Minggu - Jakarta Selatan
+            Barat, Jakarta Selatan
           </span>
 
           <br />
