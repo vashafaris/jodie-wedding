@@ -103,6 +103,10 @@ const Rsvp = () => {
     threshold: 0.5,
   });
 
+  const handleOpenRsvp = () => {
+    window.open('https://putridanjodie.id/', '_blank', 'noopener,noreferrer');
+  };
+
   if (router.query.type !== 'rsvp') {
     return null;
   }
@@ -117,7 +121,9 @@ const Rsvp = () => {
         <span>Mohon konfirmasi kehadiran</span>
         <span>Bapak/Ibu/Saudara/i</span>
 
-        <StyledButton types="secondary">Klik untuk RSVP</StyledButton>
+        <StyledButton types="secondary" onClick={handleOpenRsvp}>
+          Klik untuk RSVP
+        </StyledButton>
       </div>
     </StyledRsvp>
   );

@@ -203,7 +203,7 @@ const Comments = () => {
                         await fetchMore();
                       }}
                     >
-                      MORE LOVELY MESSAGES
+                      LOAD MORE LOVELY MESSAGES...
                     </button>
                   </div>
                 )}
