@@ -100,7 +100,7 @@ const Rsvp = () => {
 
   const [ref, isInView] = useInView({
     triggerOnce: true,
-    threshold: 0.6,
+    threshold: 0.5,
   });
 
   if (router.query.type !== 'rsvp') {

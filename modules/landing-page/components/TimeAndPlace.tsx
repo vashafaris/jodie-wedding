@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import Button from '~/components/button/button';
 
 const StyledTimeAndPlace = styled.section`
+  padding: 20vh 0;
+  padding-bottom: 10vh;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -77,7 +79,7 @@ const TimeAndPlace = () => {
 
   const [ref, isInView] = useInView({
     triggerOnce: true,
-    threshold: 0.4,
+    threshold: 0.8,
   });
 
   const handleOpenMaps = () => {

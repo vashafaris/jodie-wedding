@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const StyledHealthProtocol = styled.section`
+  padding: 20vh 0;
   min-height: 600px;
   display: flex;
   align-items: start;
