@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 const StyledOutfitTheme = styled.section`
   min-height: 600px;
+  height: 100vh;
 
   display: flex;
   align-items: center;
@@ -47,7 +48,7 @@ const StyledOutfitTheme = styled.section`
     }
 
     span {
-      font-size: 28px;
+      font-size: 18px;
 
       @media (max-width: ${DEVICE_SIZE.tablet}) {
         font-size: 18px;
@@ -105,6 +106,8 @@ const OutfitTheme = () => {
         <h1>Tema Busana</h1>
         <span>Mari kenakan kain batik</span>
         <span>atau tenun kesayanganmu!</span>
+        <br />
+        <span>Harap tidak menggunakan high heels, ya</span>
       </motion.div>
     </StyledOutfitTheme>
   );
