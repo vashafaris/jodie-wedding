@@ -1,9 +1,22 @@
 import { DEVICE_SIZE } from 'constants/device-size';
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
-const StyledFarewell = styled.section`
+type StyledFarewellProps = {
+  isInView: boolean;
+};
+
+const StyledFarewell = styled.section<StyledFarewellProps>`
+  ${props =>
+    props.isInView &&
+    `
+    -webkit-animation: 1s cubic-bezier(0.87, 0, 0.13, 1) forwards background-easing;
+    animation: 1s cubic-bezier(0.87, 0, 0.13, 1) forwards background-easing;
+  `}
+
   min-height: 600px;
+  opacity: 0;
 
   background-image: url('images/farewell.png');
   background-position: center bottom;
@@ -28,11 +41,34 @@ const StyledFarewell = styled.section`
   span {
     font-size: 18px;
   }
+
+  @keyframes background-easing {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes background-easing {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const Farewell = () => {
+  const [ref, isInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
   return (
-    <StyledFarewell>
+    <StyledFarewell ref={ref} isInView={isInView}>
       <h1>sampai jumpa</h1>
 
       <span>Desgined by Putri & Jodie</span>

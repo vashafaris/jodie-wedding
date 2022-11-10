@@ -24,7 +24,6 @@ const StyledComment = styled.section`
 
   span {
     color: #828282;
-    // font-weight: bold;
     font-weight: 400;
   }
 
@@ -38,8 +37,7 @@ const StyledComments = styled.section`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 100px 128px;
-  gap: 100px;
+  padding: 20vh 128px;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
     padding: 100px 24px;
