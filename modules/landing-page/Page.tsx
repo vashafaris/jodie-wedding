@@ -1,4 +1,4 @@
-import useDeviceDetect from 'hooks/useDeviceDetect';
+import useMobile from 'hooks/useMobile';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoadingScreen from '~/components/loading-screen';
@@ -21,7 +21,8 @@ const StyledMain = styled.main`
 const LandingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const { isMobile } = useDeviceDetect();
+  // const { isMobile } = useDeviceDetect();
+  const { isMobile } = useMobile();
 
   const handleLoading = () => {
     setIsLoading(false);
