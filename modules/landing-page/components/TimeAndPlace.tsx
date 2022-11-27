@@ -72,7 +72,21 @@ const StyledTimeAndPlace = styled.section`
 const TimeAndPlace = () => {
   const router = useRouter();
 
-  const time = router.query.p === '1' ? '11.00 - 13.00' : '15.30 - 17.30';
+  let time = '';
+
+  switch (router.query.sesi) {
+    case 'akad':
+      time = '08.30 - 10.30';
+      break;
+    case '1':
+      time = '11.00 - 13.00';
+      break;
+    case '2':
+      time = '15.30 - 17.30';
+      break;
+    default:
+      time = '08-30 - 17.30';
+  }
 
   const titleAnimation = useAnimation();
   const informationAnimation = useAnimation();

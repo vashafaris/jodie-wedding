@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 
 import Button from '~/components/button/button';
+import { useRouter } from 'next/router';
 
 type StyledRsvpProps = {
   isInView: boolean;
@@ -95,13 +96,26 @@ const StyledButton = styled(Button)`
 `;
 
 const Rsvp = () => {
+  const router = useRouter();
   const [ref, isInView] = useInView({
     triggerOnce: true,
     threshold: 0.5,
   });
 
   const handleOpenRsvp = () => {
-    window.open('https://putridanjodie.id/', '_blank', 'noopener,noreferrer');
+    switch (router.query.sesi) {
+      case 'akad':
+        window.open('https://forms.gle/k6yqT9szJTUuXzBa9', '_blank', 'noopener,noreferrer');
+        break;
+      case '1':
+        window.open('https://forms.gle/8bsU4ASFyVD7ms3j6', '_blank', 'noopener,noreferrer');
+        break;
+      case '2':
+        window.open('https://forms.gle/Eh3ararDH7DA8xRq6', '_blank', 'noopener,noreferrer');
+        break;
+      default:
+        window.open('https://jodie-wedding.vercel.app/', '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (

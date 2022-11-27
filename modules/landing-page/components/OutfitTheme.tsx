@@ -14,7 +14,7 @@ const StyledOutfitTheme = styled.section`
   gap: 15%;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
-    padding: 60px 0;
+    padding: 60px 24px;
     flex-direction: column;
   }
 
@@ -107,7 +107,10 @@ const OutfitTheme = () => {
         <span>Mari kenakan kain batik</span>
         <span>atau tenun kesayanganmu!</span>
         <br />
-        <span>Harap tidak menggunakan high heels, ya</span>
+        <span>
+          Acara akan dilaksanakan diarea semi-outdoor, oleh karena itu mohon hindari menggunakan
+          sepatu hak tinggi
+        </span>
       </motion.div>
     </StyledOutfitTheme>
   );
