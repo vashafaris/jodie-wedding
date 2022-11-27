@@ -38,6 +38,11 @@ const StyledOutfitTheme = styled.section`
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding-right: 36px;
+
+    @media (max-width: ${DEVICE_SIZE.tablet}) {
+      padding-right: 0;
+    }
 
     @media (max-width: ${DEVICE_SIZE.tablet}) {
       text-align: center;
@@ -108,8 +113,9 @@ const OutfitTheme = () => {
         <span>atau tenun kesayanganmu!</span>
         <br />
         <span>
-          Acara akan dilaksanakan diarea semi-outdoor, oleh karena itu mohon hindari menggunakan
-          sepatu hak tinggi
+          Acara akan dilaksanakan di area semi-outdoor,
+          <br />
+          oleh karena itu mohon hindari menggunakan sepatu hak tinggi
         </span>
       </motion.div>
     </StyledOutfitTheme>
