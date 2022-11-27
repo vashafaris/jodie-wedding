@@ -174,8 +174,8 @@ const StyledHeroMobile = styled.section`
   .img-1 {
     position: absolute;
     opacity: 0;
-    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
-      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    // -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+    //   0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation-delay: 0s, 0.5s;
@@ -184,8 +184,8 @@ const StyledHeroMobile = styled.section`
   .img-2 {
     position: absolute;
     opacity: 0;
-    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
-      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    // -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+    //   0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation-delay: 0.6s, 1.1s;
@@ -194,8 +194,8 @@ const StyledHeroMobile = styled.section`
   .img-3 {
     position: absolute;
     opacity: 0;
-    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
-      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    // -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+    //   0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation-delay: 1.2s, 1.7s;
@@ -204,8 +204,8 @@ const StyledHeroMobile = styled.section`
   .img-4 {
     position: absolute;
     opacity: 0;
-    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
-      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    // -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+    //   0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation-delay: 1.8s, 2.3s;
@@ -214,8 +214,8 @@ const StyledHeroMobile = styled.section`
   .img-5 {
     position: absolute;
     opacity: 0;
-    -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
-      0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
+    // -webkit-animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
+    //   0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadein,
       0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards fadeout;
     animation-delay: 2.4s, 2.9s;
@@ -230,14 +230,14 @@ const StyledHeroMobile = styled.section`
     }
   }
 
-  @-webkit-keyframes fadein {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  // @-webkit-keyframes fadein {
+  //   0% {
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
 
   @keyframes fadeout {
     0% {
@@ -248,14 +248,14 @@ const StyledHeroMobile = styled.section`
     }
   }
 
-  @-webkit-keyframes fadeout {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+  // @-webkit-keyframes fadeout {
+  //   0% {
+  //     opacity: 1;
+  //   }
+  //   100% {
+  //     opacity: 0;
+  //   }
+  // }
 `;
 
 const HeroMobile = () => {

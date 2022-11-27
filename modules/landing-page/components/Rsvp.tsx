@@ -1,5 +1,4 @@
 import { DEVICE_SIZE } from 'constants/device-size';
-import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
@@ -96,8 +95,6 @@ const StyledButton = styled(Button)`
 `;
 
 const Rsvp = () => {
-  const router = useRouter();
-
   const [ref, isInView] = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -106,10 +103,6 @@ const Rsvp = () => {
   const handleOpenRsvp = () => {
     window.open('https://putridanjodie.id/', '_blank', 'noopener,noreferrer');
   };
-
-  if (router.query.type !== 'rsvp') {
-    return null;
-  }
 
   return (
     <StyledRsvp ref={ref} isInView={isInView}>
