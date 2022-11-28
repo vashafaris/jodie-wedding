@@ -4,6 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
+import ImageOverlay from '~/components/image-overlay';
 
 const StyledOutfitTheme = styled.section`
   min-height: 600px;
@@ -22,16 +23,7 @@ const StyledOutfitTheme = styled.section`
     display: flex;
     justify-content: flex-end;
     flex: 1;
-
-    img {
-      max-width: 80%;
-
-      @media (max-width: ${DEVICE_SIZE.tablet}) {
-        max-width: 100%;
-        object-fit: contain;
-        margin-bottom: 20px;
-      }
-    }
+    padding: 24px;
   }
 
   .information-container {
@@ -95,11 +87,13 @@ const OutfitTheme = () => {
   return (
     <StyledOutfitTheme ref={ref}>
       <div className="image-container">
-        <motion.img
-          animate={imgAnimation}
-          initial={{ opacity: 0 }}
-          src="images/berkain.png"
+        <ImageOverlay
           alt="Berkain"
+          src="images/berkain.png"
+          className="profile-img"
+          height={398}
+          width={600}
+          isInView={isInView}
         />
       </div>
 

@@ -53,6 +53,7 @@ const StyledImageOverlay = styled.div<StyledImageOverlayProps>`
     height: 100% !important;
     width: 100% !important;
     opacity: 0;
+    margin: auto;
 
     @keyframes zoomOut {
       0% {
