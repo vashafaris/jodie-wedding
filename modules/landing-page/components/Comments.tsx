@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DEVICE_SIZE } from 'constants/device-size';
@@ -156,7 +157,7 @@ const Comments = () => {
   };
 
   useEffect(() => {
-    if (router.query.comments) commentRef.current?.scrollIntoView();
+    if (router.query.comments) (commentRef.current as any).scrollIntoView();
   }, [router.query.comments]);
 
   return (
