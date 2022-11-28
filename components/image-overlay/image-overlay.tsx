@@ -46,7 +46,8 @@ const StyledImageOverlay = styled.div<StyledImageOverlayProps>`
   }
 
   img {
-    animation: zoomOut 3s cubic-bezier(0.76, 0, 0.24, 1) -0.25s forwards;
+    ${props =>
+      props.isInView && `animation: zoomOut 3s cubic-bezier(0.76, 0, 0.24, 1) -0.25s forwards;`}
     object-fit: cover;
     vertical-align: middle;
     height: 100% !important;

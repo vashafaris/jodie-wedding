@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DEVICE_SIZE } from 'constants/device-size';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '~/components/button/button';
@@ -9,6 +12,10 @@ import LoadingSpinner from '~/components/loading-spinner';
 import fetch from '~/lib/fetch';
 
 import { useGetComments } from '../hooks/get-comments';
+
+interface StyledCommentsProps {
+  ref: any;
+}
 
 const StyledComment = styled.section`
   padding: 24px 0;
@@ -33,7 +40,7 @@ const StyledComment = styled.section`
   }
 `;
 
-const StyledComments = styled.section`
+const StyledComments = styled.section<StyledCommentsProps>`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -117,6 +124,8 @@ const Comment = ({ name, comment }: CommentProps) => {
 };
 
 const Comments = () => {
+  const router = useRouter();
+  const commentRef = useRef();
   const { comments, count, isLoading, limit, fetchMore, refetch } = useGetComments();
 
   const [name, setName] = useState<string>('');
@@ -146,8 +155,12 @@ const Comments = () => {
     setIsSubmitLoading(false);
   };
 
+  useEffect(() => {
+    if (router.query.comments) commentRef.current?.scrollIntoView();
+  }, [router.query.comments]);
+
   return (
-    <StyledComments>
+    <StyledComments ref={commentRef}>
       <div className="input-comment-container">
         <div className="title-container">
           <h1>
