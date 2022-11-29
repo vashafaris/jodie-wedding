@@ -16,6 +16,8 @@ const StyledHealthProtocol = styled.section`
     flex-direction: column;
     align-items: center;
     text-align: center;
+    min-height: 100vh;
+    padding: 36px 0;
   }
 
   .title-container {

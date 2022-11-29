@@ -13,10 +13,12 @@ const StyledOutfitTheme = styled.section`
   display: flex;
   align-items: center;
   gap: 15%;
+  overflow: hidden;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
     padding: 60px 24px;
     flex-direction: column;
+    height: unset;
   }
 
   .image-container {
@@ -24,6 +26,7 @@ const StyledOutfitTheme = styled.section`
     justify-content: flex-end;
     flex: 1;
     padding: 24px;
+    overflow: hidden;
   }
 
   .information-container {

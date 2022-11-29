@@ -14,7 +14,6 @@ const StyledRsvp = styled.section<StyledRsvpProps>`
   ${props =>
     props.isInView &&
     `
-    -webkit-animation: 1s cubic-bezier(0.87, 0, 0.13, 1) forwards background-easing;
     animation: 1s cubic-bezier(0.87, 0, 0.13, 1) forwards background-easing;
   `}
 
@@ -76,15 +75,6 @@ const StyledRsvp = styled.section<StyledRsvpProps>`
         opacity: 1;
       }
     }
-
-    @-webkit-keyframes background-easing {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
   }
 `;
 
@@ -114,7 +104,7 @@ const Rsvp = () => {
         window.open('https://forms.gle/Eh3ararDH7DA8xRq6', '_blank', 'noopener,noreferrer');
         break;
       default:
-        window.open('https://jodie-wedding.vercel.app/', '_blank', 'noopener,noreferrer');
+        window.open('https://putridanjodie.vercel.app/', '_blank', 'noopener,noreferrer');
     }
   };
 

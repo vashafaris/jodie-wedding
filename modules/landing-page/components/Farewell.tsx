@@ -71,7 +71,7 @@ const Farewell = () => {
     <StyledFarewell ref={ref} isInView={isInView}>
       <h1>sampai jumpa</h1>
 
-      <span>Desgined by Putri & Jodie</span>
+      <span>Designed by Putri & Jodie</span>
     </StyledFarewell>
   );
 };

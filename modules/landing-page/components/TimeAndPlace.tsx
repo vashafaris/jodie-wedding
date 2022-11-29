@@ -17,6 +17,10 @@ const StyledTimeAndPlace = styled.section`
   justify-content: center;
   gap: 94px;
 
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
+    padding: 36px 0;
+  }
+
   h2 {
     font-size: 72px;
   }
